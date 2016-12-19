@@ -1,0 +1,73 @@
+form .ng-pristine{
+  border: 1px dotted gray;
+  /*background-color: aqua;*/
+}
+form .ng-invalid-required.ng-dirty ,form .ng-touched.ng-empty{
+  background-color: bisque;
+}
+form .ng-invalid-email.ng-dirty{
+  background-color: red;
+}
+form .ng-valid.ng-dirty{
+  background-color: #9bff94;
+}
+
+
+button{
+  letter-spacing: 1px;
+}
+.col-md-offset-3 .col-md-4 .has-error .ng-binding{
+  margin-left: 10px;
+  color: lightsalmon;
+}
+
+.reg_dop{
+  padding-top: 20px;
+
+}
+.has-error{
+
+  color: #ff2e52;
+}
+.head-block,.footer-block{
+  height: 40px;
+background-color: #002b48;
+}
+.head-block_2{
+  height: 80px;
+  background: url('../img/header.png') repeat;
+  border-bottom: 1px solid #eee;
+}
+.col-md-1{
+  border: 1px solid black;
+
+}
+.logo{
+  padding-top: 5px;
+}
+.back-logo{
+  padding-left: 80px;
+  padding-top: 10px;
+  height: 67px;
+  opacity: 0.7;
+}
+.content{
+  border: 1px solid #eee;
+  border-radius:8px;
+  margin-top: 20px;
+
+}
+.col-md-12 >h1 {
+  height:120px;
+  font-size: 46px;
+  padding-top:20px;
+}
+.footer-block{
+  height: 120px;
+}
+.bottom{
+  height: 100px;
+}
+.col-md-12.ng-scope > h1{
+  text-align: center;
+}
