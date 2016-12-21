@@ -1,3 +1,11 @@
+body{
+  background: red;
+}
+
+.ng-scope{
+
+  margin-top: 20px;
+}
 form .ng-pristine{
   border: 1px dotted gray;
   /*background-color: aqua;*/
