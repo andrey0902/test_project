@@ -1,12 +1,9 @@
  // new controler
 
-         App.controller('MainCtrl',function ($scope) {
+         App.controller('CreateCtrl',function ($scope) {
 
-             $('#my-tab a').click(function (e) {
-                 e.preventDefault()
-                 $(this).tab('show')
-             })
 
+             console.log('CreateCtrl')
 
 
           /*  console.log($('main controller'));

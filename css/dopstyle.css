@@ -1,5 +1,14 @@
-body{
-  background: red;
+.save_post{
+  margin-left: 14%;
+}
+#description{
+  max-width: 600px;
+}
+div.add_post{
+  min-height: 735px;
+  border: 1px dotted #d1d1d1;
+  border-radius: 8px;
+  background-color: #d9edf7;
 }
 
 .ng-scope{
