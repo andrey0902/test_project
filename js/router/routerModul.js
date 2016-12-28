@@ -1,6 +1,7 @@
   // new router
   App
-      .config(function ($routeProvider) {
+      .config(function ($routeProvider, $locationProvider) {
+
           $routeProvider
           .when('/',{
               templateUrl: '/tpl/form.tpl',
@@ -9,7 +10,7 @@
           .when('/main',{
 
               templateUrl:'/tpl/main.html',
-              controller: 'MainCtrl'
+
           })
               .when('/create',{
 

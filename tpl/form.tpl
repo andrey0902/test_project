@@ -3,7 +3,7 @@
                <div class="row" ng-if="showFormAuthor">
                    <div class="col-md-12 text-center">
                        <h1>Вход</h1>
-                       <a href="#!/main">Вход</a>
+                       <a href="#!/main">Вход1</a>
 
                    </div>
                </div>
