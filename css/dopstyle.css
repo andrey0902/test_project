@@ -43,7 +43,8 @@ button{
 
 }
 .has-error{
-
+  margin-top: 10px;
+  /*height:10px;*/
   color: #ff2e52;
 }
 .head-block,.footer-block{

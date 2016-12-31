@@ -9,24 +9,24 @@
 
 
 
-            $scope.show= function (isShow) {
-                if(isShow=='recovery'){
-                    $scope.showFormAuthor= false;
-                    $scope.showRegisterForm=false;
-                    $scope.showRecoverForm=true;
-
-                } else if( isShow=='registration'){
-                    $scope.showFormAuthor= false;
-                    $scope.showRecoverForm=false;
-                    $scope.showRegisterForm=true;
-                }if(isShow=='auto'){
-                    $scope.showRecoverForm=false;
-                    $scope.showFormAuthor= true;
-                    $scope.showRegisterForm=false;
-
-                }
-            };
-
+             $scope.show= function (isShow) {
+                 if(isShow=='recovery'){
+                     $scope.showFormAuthor= false;
+                     $scope.showRegisterForm=false;
+                     $scope.showRecoverForm=true;
+                     $scope.showError=false;
+                 } else if( isShow=='registration'){
+                     $scope.showFormAuthor= false;
+                     $scope.showRecoverForm=false;
+                     $scope.showRegisterForm=true;
+                     $scope.showError=false;
+                 }if(isShow=='auto'){
+                     $scope.showRecoverForm=false;
+                     $scope.showFormAuthor= true;
+                     $scope.showRegisterForm=false;
+                     $scope.showError=false;
+                 }
+             };
 
 
 
@@ -46,7 +46,7 @@
             $scope.inquiry=function(userParam,isValid){
 
                 if(isValid){
-                    // собираем и отправляем запрос на сервер)))
+                    // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ)))
                  console.log('very good');
                   return;
                 }else{
@@ -54,22 +54,22 @@
                 }
 
             };
-         
 
-            $scope.getError=function(error){
-                if(angular.isDefined(error)){
-                    if(error.required){
-                        return 'Поле не должно быть пустым';
-                    }if(error.minlength){
-                        return 'Поле должно содержать не меньше 3 символов';
-                    }if(error.maxlength){
-                        return 'Поле должно содержать максимум 10 символов';
-                    }if(error.passwor){
-                        return 'Неправильно введее пароль'
-                    }
-                    if(error.email){
-                        return 'Заполниет корректно поле'
-                    }
-                }
-            }
+
+             $scope.getError=function(error){
+                 if(angular.isDefined(error)){
+                     if(error.required){
+                         return 'РџРѕР»Рµ РЅРµ РґРѕР»Р¶РЅРѕ Р±С‹С‚СЊ РїСѓСЃС‚С‹Рј';
+                     }if(error.minlength){
+                         return 'РџРѕР»Рµ РґРѕР»Р¶РЅРѕ СЃРѕРґРµСЂР¶Р°С‚СЊ РЅРµ РјРµРЅСЊС€Рµ 3 СЃРёРјРІРѕР»РѕРІ';
+                     }if(error.maxlength){
+                         return 'РџРѕР»Рµ РґРѕР»Р¶РЅРѕ СЃРѕРґРµСЂР¶Р°С‚СЊ РјР°РєСЃРёРјСѓРј 10 СЃРёРјРІРѕР»РѕРІ';
+                     }if(error.passwor){
+                         return 'РќРµРїСЂР°РІРёР»СЊРЅРѕ РІРІРµРґРµРµ РїР°СЂРѕР»СЊ'
+                     }
+                     if(error.email){
+                         return 'Р—Р°РїРѕР»РЅРёРµС‚ РєРѕСЂСЂРµРєС‚РЅРѕ РїРѕР»Рµ'
+                     }
+                 }
+             }
             })

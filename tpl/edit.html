@@ -1,9 +1,97 @@
-<div class="row">
-    <div class="col-md-offset-1 col-md-10">
-
-        <h1> будем edit</h1>
+<div class="row"ng-controller="EditCtrl">
+    <div class="col-md-offset-1 add_post col-md-10">
 
 
+        <form class="form-horizontal" name="addPost" novalidate ng-submit="addPost1(data,addPost.$valid)">
+            <div class="form-group text-center">
+                <h1> Описание ошибки</h1>
+            </div>
+            <div class="form-group">
+                <label for="title" class="control-label col-md-4">Название</label>
+                <div class="col-md-5">
+                    <select name="titl" class="form-control" id="title" required ng-model="data.title">
+                        <option value="bag">Баг</option>
+                        <option value="typo">Опечатка</option>
+                        <option value="complete">Дополнить</option>
+                        <option value="errorDescription">Неправильное описание</option>
+                    </select>
+                </div>
+            </div>
+                <div class="col-md-offset-5 has-error" ng-if="showError">
+                    {{getError(addPost.titl.$error)}}
+                </div>
+            <div class="form-group">
+                <label for="priority" class="control-label col-md-4">Приоритет</label>
+                <div class="col-md-5">
+                    <select name="prioriti" class="form-control" id="priority" required ng-model="data.priority">
+                        <option value="low">Низкий</option>
+                        <option value="normal">Средний</option>
+                        <option value="high">Высокий</option>
+                        <option value="urgent">Неотложный</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-md-offset-5 has-error" ng-if="showError">
+                {{getError(addPost.prioriti.$error)}}
+            </div>
+            <div class="form-group">
+                <label for="shotDescription" class="control-label col-md-4">Краткое описание</label>
+                <div class="col-md-5">
+                    <input type="text" name="shotDesc" class="form-control" required id="shotDescription" ng-model="data.shotDescpt">
+                </div>
+            </div>
+            <div class="col-md-offset-5 has-error" ng-if="showError">
+                {{getError(addPost.shotDesc.$error)}}
+            </div>
+            <div class="form-group">
+                <label for="versionOs" class="control-label col-md-4">Версия ОС</label>
+                <div class="col-md-5">
+                    <input type="text" name="versOs" id="versionOs" ng-model="data.versionOs" class="form-control">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="versionBrouser" class="control-label col-md-4">Название и версия браузера</label>
+                <div class="col-md-5">
+                    <input type="text" name="versBraus" id="versionBrouser" ng-model="data.versionBrouser" class="form-control">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="url" class="control-label col-md-4">Адрес страницы</label>
+                <div class="col-md-5">
+                    <input type="url" name="urlPage" id="url" ng-model="data.url" class="form-control">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="description" class="control-label col-md-4">Полное описание</label>
+                <div class="col-md-5">
+                    <textarea name="descript" class="form-control" id="description" ng-model="data.description" required cols="30" rows="10">
 
+                    </textarea>
+                </div>
+            </div>
+            <div class="col-md-offset-5 has-error" ng-if="showError">
+                {{getError(addPost.descript.$error)}}
+            </div>
+            <div class="form-group">
+                <label for="fild"  class="control-label col-md-4">Добавить файл</label>
+                <div class="col-md-5">
+                    <input type="file" class="form-control" name="fille" id="fild" ng-model="data.file">
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-2 col-md-offset-4">
+                    <button class="btn btn-success" ng-click="check(data,addPost.$valid);push(data)">Отправить</button>
+                </div>
+                <div class="col-md-4  col-md-offset-1">
+
+                    <input type="checkbox" checked="checked" id="save" ng-model="data.save">
+
+                    <button id="saveButton" class="btn save_post btn-info" >Сохранить</button>
+
+                </div>
+            </div>
+        </form>
+
+        <!--ng-submit="addPost(data,addPost.$valid)"-->
     </div>
 </div>

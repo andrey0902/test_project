@@ -1,8 +1,21 @@
  // new controler
 
-         App.controller('CreateCtrl',function ($scope,$http,$resource,$location) {
+         App.controller('EditCtrl',function ($scope,$http,$resource,$location,$rootScope) {
+
              const baseUrl='http://127.0.0.1:2403/error/';
-             $scope.dataTabsNew=[];
+
+//test block
+            // $scope.testis=document.cookie;
+
+           //  var result=$scope.testis.match(/edit1=({.*})/i)
+          //  $scope.data=JSON.parse(result[1])
+            // console.log(result)
+           //  console.log($scope.data)
+             //document.cookie = "edit=; path=/; expires=0";
+//end test block
+                 $scope.data=$rootScope.tempItem;
+
+
             $scope.dataResurs=$resource(baseUrl+':id',{id:"@id"})
              // создание нового элемента
             /* $scope.create = function (item) {
@@ -22,11 +35,11 @@
                     console.log('push')
 
             }
-            $scope.save=function (data) {
+            $scope.save1=function (data) {
+
                 if(angular.isDefined(data)){
-                    new $scope.dataResurs(data).$save().then(function(newItem){
-                        $scope.dataTabsNew.push(newItem)
-                        $location.url('/main/')
+                   data.$save().then(function(newItem){
+                     $location.url('/main/')
                     })
                 }
 
@@ -39,8 +52,8 @@ $scope.addPost1=function (data,valid) {
     if(valid){
 
          if($('#save').prop('checked')==true){
-             $scope.save(data);
-             $location.url("http://localhost/#!/main");
+             $scope.save1(data);
+            // $location.url("http://localhost/#!/main");
          }else{
              $scope.pushe(data);
          }
@@ -71,7 +84,7 @@ $scope.addPost1=function (data,valid) {
                  }
              }
 
-             console.log('CreateCtrl')
+             console.log('EditCtrl')
 
 
 
