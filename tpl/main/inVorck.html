@@ -1,4 +1,4 @@
-<div class='btn btn-group-justified'>
+<div class='btn btn-group-justified' ng-controller="inVorckCtrl">
     <a href='#!/create'class='btn btn-success'> создать задачу
     </a>
 
@@ -8,31 +8,31 @@
     <thead>
     <tr>
         <th>№</th>
-        <th>Title</th>
-        <th>shotDescpt</th>
-        <th>Date</th>
-        <th>Prioriti</th>
-        <th>Edit</th>
+        <th>Время принятия</th>
+        <th>Приоритет</th>
+        <th>Название</th>
+        <th>Краткое описание</th>
+        <th>Просморт</th>
     </tr>
     </thead>
     <tbody>
     <tr ng-repeat="item in myTascks">
         <td>
-            
+
                 {{$index}}
-          
-        </td>
-        <td>
-           {{item.title}}
-        </td>
-        <td>
-            <a href="/#!/main#" ng-click="preview(item)"> {{item.shotDescpt}}</a>
+
         </td>
         <td>
             13:00
         </td>
         <td>
             <span class=" text-info"  type="button">{{item.priority}}</span>
+        </td>
+        <td>
+            {{item.title}}
+        </td>
+        <td>
+            <a href="/#!/main#" ng-click="preview(item)"> {{item.shotDescpt}}</a>
         </td>
         <td>
             <button class="btn btn-xs btn-info"  ng-click="preview(item)"> Просмотр</button>

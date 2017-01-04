@@ -1,6 +1,9 @@
 .save_post{
   margin-left: 14%;
 }
+.checkbox_save{
+  display:none ;
+}
 #description{
   max-width: 600px;
 }

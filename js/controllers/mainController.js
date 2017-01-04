@@ -102,8 +102,24 @@ setTimeout(function () {
                  // })
                  $scope.myTascks.splice($scope.myTascks.indexOf(item),1)
              }
+//preview
+             $scope.preview=function (item) {
+                 $rootScope.previewItem=item;
+                 $scope.url='./tpl/preview.html';
+             }
+             $rootScope.$watch('url',function (newValue,oldValue) {
 
+                 if($rootScope.url=='tableAll.html'){
+                     console.log('on table')
+                     $scope.url='./tpl/main/tableAll.html';
 
+                 }else if($rootScope.url=='table.html'){
+                     $scope.url='./tpl/main/table.html';
+
+                 }
+                 $rootScope.url='';
+                 return;
+             })
 
              })
 
