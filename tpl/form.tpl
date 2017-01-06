@@ -69,7 +69,7 @@
 
                     <div class="row">
                         <div class="col-md-offset-1 col-md-10">
-                            <form  name="regForm" class="form-horizontal" novalidate ng-submit="mismatch(newUser.password,newUser.confirmPass); inquiry(newUser,regForm.$valid); ">
+                            <form  name="regForm" class="form-horizontal" novalidate ng-submit="mismatch(newUser.password,newUser.confirmPass); quireReg(newUser,regForm.$valid); ">
                                 <div class="form-group">
                                     <label for="logi" class="control-label col-md-4"> Введите логин</label>
                                     <div class="col-md-8">
@@ -125,7 +125,7 @@
                                 <div class="form-group">
                                     <label for="secret" class="control-label col-md-4"> Введите секретное слово</label>
                                     <div class="col-md-8">
-                                        <input type="text" name="userSecret" id="secret" class="form-control" ng-model="newUser.secret" ng-required="requiredValue" ng-minlength="minValue" ng-maxlength="maxValue">
+                                        <input type="text" name="userSecret" id="secret" class="form-control" ng-model="newUser.keyWord" ng-required="requiredValue" ng-minlength="minValue" ng-maxlength="maxValue">
                                     </div>
                                     <div class="form-group" ng-if="showError">
                                         <div class="col-md-offset-4  col-md-8 has-error ">

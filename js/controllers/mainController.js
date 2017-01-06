@@ -37,7 +37,9 @@
                             break;
                         }
                     }
-               // console.log($scope.url);
+                console.log($rootScope);
+                console.log('maincontroller');
+
 // switch tabs
 //              $interval(function () {
 //                  $('#my a').click(function (e) {
