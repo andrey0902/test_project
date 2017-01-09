@@ -11,6 +11,14 @@
                     <div class="col-md-offset-1 col-md-10">
                         <form ng-if="showFormAuthor" class="form-horizontal" name="autoForm" novalidate ng-submit="inquiry(User, autoForm.$valid)">
                             <div class="form-group">
+
+                                   <div class="form-group" ng-if="showErrorPassword">
+                                  <div class="col-md-offset-4  col-md-8 has-error ">
+                                  <span>Неправильно введен логин или пароль</span>
+                                  </div>
+                               </div>
+                               </div>
+                            <div class="form-group">
                                 <label for="name" class="control-label col-sm-3" >Введите логин</label>
                                 <div class="col-sm-8">
                                     <input type="text" id="name" name="login" class="form-control" ng-model="User.login" ng-required="requiredValue" ng-minlength="minValue" ng-maxlength="maxValue">
@@ -21,17 +29,20 @@
                                 <div class="col-md-offset-4  col-md-8 has-error ">
                                     {{getError(autoForm.login.$error)}}
                                 </div>
-
                                 </div>
+                                   <div class="form-group" ng-if="showErrorLogin">
+                                      <div class="col-md-offset-4  col-md-8 has-error ">
+                                        Логин занят!
+                                      </div>
+                                    </div>
                             <div class="form-group">
                                 <label for="pass" class="col-sm-3 control-label">Введите пароль</label>
-                                <div class=" col-sm-8">
 
-
+                                <div class="col-sm-8">
                                     <input type="text" class="form-control" id="pass" name="userPassword"  ng-model="User.password" ng-required="requiredValue" ng-minlength="minValue" ng-maxlength="maxValue">
                                 </div>
-
                             </div>
+
                             <div class="form-group" ng-if="showError">
                                 <div class="col-md-offset-4  col-md-8 has-error ">
 

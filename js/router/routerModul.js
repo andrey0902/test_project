@@ -4,7 +4,7 @@
 
           $routeProvider
           .when('/',{
-              templateUrl: '/tpl/form.tpl',
+              templateUrl: '/tpl/form.html',
               controller: "AppCtrl"
           })
           .when('/main',{

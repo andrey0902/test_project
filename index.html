@@ -7,12 +7,20 @@
 <meta name="description" content=" Уроки по html">
 <meta name="keywords" content=" Описание о чем наш сайт для поисковых систем ">
 <!-- подключение файла webserwer css -->
+
+
+
+
+
     <script src="./js/lib/jquery-3.1.1.js"></script>
+    <script src='./node_modules/blueimp-md5/js/md5.min.js'> </script>
 
     <link rel="stylesheet" href="css/bootstrap.css">
     <link rel="stylesheet" href="css/bootstrap-theme.css">
     <link rel="stylesheet" href="css/dopstyle.css">
+
     <script src="js/lib/angular.js"></script>
+    <script src='./node_modules/angular-cookies/angular-cookies.min.js'> </script>
     <script src="js/lib/angular-route.js"></script>
     <script type="text/javascript" src="js/lib/resurse.js"></script>
     <script src="js/lib/bootstrap.js"></script>
@@ -32,7 +40,8 @@
 <body >
 
     <div class="container-fluid"  >
-        <div class="row  head-block">
+        <div class="row  head-block" ng-controller="MainCtrl">
+            <div class="col-md-offset-9 text-info" ng-if="main"><b>Здравствуй: {{userInfo.name}}</b> </div>
         </div>
         <div class="row head-block_2">
             <div class="col-sm-offset-2 col-sm-4 logo">

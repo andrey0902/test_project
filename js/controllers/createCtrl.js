@@ -1,9 +1,13 @@
  // new controler
 
-         App.controller('CreateCtrl',function ($scope,$http,$resource,$location) {
+         App.controller('CreateCtrl',function ($scope,$http,$resource,$location,$cookies) {
              const baseUrl='http://127.0.0.1:2403/error/';
              $scope.dataTabsNew=[];
             $scope.dataResurs=$resource(baseUrl+':id',{id:"@id"})
+             console.log($cookies.getObject('test'))
+
+             $scope.uid=$cookies.getObject('test').uid;
+             console.log($scope.uid)
              // создание нового элемента
             /* $scope.create = function (item) {
                  new $scope.itemsResource(item).$save().then(function (newItem) {
@@ -24,6 +28,9 @@
             }
             $scope.save=function (data) {
                 if(angular.isDefined(data)){
+                    // data
+                    data.uid= $scope.uid;
+                    console.log(data)
                     new $scope.dataResurs(data).$save().then(function(newItem){
                         $scope.dataTabsNew.push(newItem)
                         $location.url('/main/')
@@ -40,7 +47,7 @@ $scope.addPost1=function (data,valid) {
 
          if($('#save').prop('checked')==true){
              $scope.save(data);
-             $location.url("http://localhost/#!/main");
+             $location.url("/main");
          }else{
              $scope.pushe(data);
          }

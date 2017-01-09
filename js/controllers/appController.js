@@ -1,12 +1,14 @@
  // new controler
 
-         App.controller('AppCtrl',function ($scope,$http,$resource,$rootScope,$location) {
+         App.controller('AppCtrl',function ($scope,$http,$resource,$rootScope,$location,$cookies) {
+            $rootScope.urlPath=null;
+             $scope.newUser=null;
             $scope.showFormAuthor=true;
             $scope.requiredValue=true;
             $scope.minValue=3;
             $scope.maxValue=10;
             const baseUrLUser='http://127.0.0.1:2403/user/';
-             $scope.usreCreate=$resource(baseUrLUser + ':id',{id :'@id'});
+             $scope.usreCreate=$resource(baseUrLUser + ':name',{id :'@name'});
 
 
 
@@ -44,46 +46,63 @@
 
 
             };
+// authorization
             $scope.inquiry=function(userParam,isValid){
 
                 if(isValid){
                     console.log(userParam)
-                    // �������� � ���������� ������ �� ������)))
-                 console.log('very good1');
-                  return;
+
+                   var test =$http.post(baseUrLUser+"login",{username:userParam.login,password:md5(userParam.password)})
+                 test.then(fulfild,reject)
+                    function fulfild(a) {
+                     var argument={
+                         name: userParam.login,
+                         id: a.data.id,
+                         uid: a.data.uid
+                     }
+                     $cookies.putObject('test',argument);  //cookies
+                        $rootScope.newUser=a.data;
+                        console.log(a);
+                        $location.url("/main");
+                    }
+                    function reject(a) {
+                        console.log(a);
+                        $scope.showErrorPassword=true;
+                    };
+
                 }else{
                     $scope.showError=true;
                 }
 
             };
-             // создание нового элемента
-             /* $scope.create = function (item) {
-              new $scope.itemsResource(item).$save().then(function (newItem) {
-              $scope.items.push(newItem);
-              $scope.currentView = "table";
-              });
-              }*/
+
             $scope.quireReg=function (userParam,isValid) {
                 if(isValid){
                     var newUser={
-                        login:userParam.login,
-                        password: userParam.password,
-                        hash: 555,
+                        username:userParam.login,
+                        password:md5(userParam.password) ,
+                        hash: md5(Math.floor(Math.random()*(100))),
                         attribute:3,
                         keyWord:userParam.keyWord,
                         email:userParam.email,
                         group:userParam.group
                     };
-                    new $scope.usreCreate(newUser).$save().then(function (newUser) {
-                        $rootScope.newUser=newUser;
-                        $location.url("/main");
-                    });
+                    var test =$http.post(baseUrLUser,newUser)
+                    test.then(fulfild,reject);
+                    function fulfild(a) {
+                        console.log(a);
+                    };
+
+                    $location.url("/main");
+
                     console.log(newUser)
                 }else{
                     $scope.showError=true;
                 }
-            }
-
+            };
+             function reject(a) {
+                 console.log(a);
+             };
 
              $scope.getError=function(error){
                  if(angular.isDefined(error)){

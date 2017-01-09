@@ -1,10 +1,26 @@
 'defer'
  // new controler
 
-         App.controller('MainCtrl',function ($scope,$resource,$location, $http,$interval,$rootScope) {
+         App.controller('MainCtrl',function ($scope,$resource,$location, $http,$interval,$rootScope,$cookies) {
+          $scope.userInfo=$cookies.getObject('test'); //cooki
+              console.log($cookies.getObject('test'));
+             $scope.main= true;
+
            const dbUrl='http://127.0.0.1:2403/error/';
              $scope.objSend=$resource(dbUrl+':id',{id:'@id'});
+//chow login
+            // if($location)
+
+             $rootScope.urlPath=$location.path();
+             $scope.$watch('urlPath',function (newVal, old) {
+                 (newVal=='/main')? $scope.main= true: $scope.main= false;
+                 (newVal=='/main')? console.log('yas'):console.log('no');
+
+                 console.log(newVal)
+             })
+             console.log($location.path())
 //question get information
+
              $scope.refresh=function () {
                  $scope.myTascks=$scope.objSend.query();
              };
@@ -38,6 +54,7 @@
                         }
                     }
                 console.log($rootScope);
+
                 console.log('maincontroller');
 
 // switch tabs
@@ -99,9 +116,9 @@ setTimeout(function () {
                 }
 //delete
              $scope.del=function(item){
-                 // item.$delete().then(function () {
-                 //     $scope.myTascks.splice($scope.myTascks.indexOf(item),1)
-                 // })
+                 item.$delete().then(function () {
+                     $scope.myTascks.splice($scope.myTascks.indexOf(item),1)
+                 })
                  $scope.myTascks.splice($scope.myTascks.indexOf(item),1)
              }
 //preview

@@ -51,6 +51,7 @@ button{
   color: #ff2e52;
 }
 .head-block,.footer-block{
+  margin-top: 0px;
   height: 40px;
 background-color: #002b48;
 }
