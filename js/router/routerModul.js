@@ -9,30 +9,24 @@
           })
           .when('/main',{
 
-              templateUrl:'/tpl/main.html',
-
+              templateUrl:'/tpl/main.html'
           })
               .when('/create',{
-
                   templateUrl:'/tpl/create.html',
                   controller: 'CreateCtrl'
               })
-              .when('/edit',{
-
-                  templateUrl:'/tpl/edit.html',
-                  controller: 'EditCtrl'
+              .when('/admin',{
+                  templateUrl:'/tpl/admin/admin.html'
               })
-              .when('/remove',{
-
-                  templateUrl:'/tpl/remove.html',
-                  controller: 'RemoveCtrl'
+              .when('/admin/main',{
+                  templateUrl:'/tpl/admin/adminMain.html'
               })
               .when('/send',{
-
                   templateUrl:'/tpl/send.html',
                   controller: 'SendCtrl'
               })
               .otherwise({
-                  redirectTo: '/404'
+                  redirectTo: '/404',
+                  templateUrl: '/tpl/form.html'
               })
   });

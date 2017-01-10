@@ -59,7 +59,8 @@
                          name: userParam.login,
                          id: a.data.id,
                          uid: a.data.uid
-                     }
+                     };
+                     $rootScope.userData=argument;
                      $cookies.putObject('test',argument);  //cookies
                         $rootScope.newUser=a.data;
                         console.log(a);
@@ -75,7 +76,7 @@
                 }
 
             };
-
+             console.log($rootScope.userData)
             $scope.quireReg=function (userParam,isValid) {
                 if(isValid){
                     var newUser={
@@ -95,7 +96,7 @@
 
                     $location.url("/main");
 
-                    console.log(newUser)
+
                 }else{
                     $scope.showError=true;
                 }

@@ -18,7 +18,7 @@
     </tr>
     </thead>
     <tbody>
-    <tr ng-repeat="item in myTascks | filter : {uid : userInfo.uid}">
+    <tr ng-repeat="item in myTascks | filter : {uid : userInfo.uid, status : 3}">
         <td>
             <div class="checkbox">
                 <label >

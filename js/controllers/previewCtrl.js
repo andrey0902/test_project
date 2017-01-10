@@ -1,12 +1,18 @@
  // new controler
 
          App.controller('previewCtrl',function ($scope,$http,$resource,$location,$rootScope) {
+             $rootScope.url=null;
 
              const baseUrl='http://127.0.0.1:2403/error/';
-
+             console.log( $rootScope.urlPage)
 //prev block
          $scope.prev=function(){
-             $rootScope.url='tableAll.html';
+             if($rootScope.urlPage=='inVorck.html'){
+                 $rootScope.url='inVorck.html';
+             }else{
+                 $rootScope.url='tableAll.html';
+             }
+
              console.log($rootScope.url)
          }
         $scope.main=function () {
@@ -18,36 +24,7 @@
                  $scope.data=$rootScope.previewItem;
 
 
-            $scope.dataResurs=$resource(baseUrl+':id',{id:"@id"})
-             // создание нового элемента
-            /* $scope.create = function (item) {
-                 new $scope.itemsResource(item).$save().then(function (newItem) {
-                     $scope.items.push(newItem);
-                     $scope.currentView = "table";
-                 });
-             }*/
 
-             $('#saveButton').click(function () {
-                 console.log($('#save'))
-                 $('input#save').prop('checked',true)
-
-             })
-            $scope.pushe=function(data){
-
-                    console.log('push')
-
-            }
-            $scope.save1=function (data) {
-
-                if(angular.isDefined(data)){
-                   data.$save().then(function(newItem){
-                     $location.url('/main/')
-                    })
-                }
-
-                    console.log('save')
-
-            }
 $scope.addPost1=function (data,valid) {
 
 
@@ -69,24 +46,9 @@ $scope.addPost1=function (data,valid) {
 
 
 
-             $scope.getError=function (error) {
-                 if(angular.isDefined(error)){
-                     if(error.required){
-                         return 'Поле не должно быть пустым';
-                     }if(error.minlength){
-                         return 'Поле должно содержать не меньше 3 символов';
-                     }if(error.maxlength){
-                         return 'Поле должно содержать максимум 10 символов';
-                     }if(error.passwor){
-                         return 'Неправильно введее пароль'
-                     }
-                     if(error.email){
-                         return 'Заполниет корректно поле'
-                     }
-                 }
-             }
 
-             console.log('EditCtrl')
+
+             console.log('previewCtrl')
 
 
 

@@ -22,7 +22,16 @@
 
              })
             $scope.pushe=function(data){
-
+                if(angular.isDefined(data)){
+                    // data
+                    data.uid= $scope.uid;
+                    data.status=2;
+                    console.log(data)
+                    new $scope.dataResurs(data).$save().then(function(newItem){
+                        $scope.dataTabsNew.push(newItem)
+                        $location.url('/main/')
+                    })
+                }
                     console.log('push')
 
             }
@@ -30,6 +39,7 @@
                 if(angular.isDefined(data)){
                     // data
                     data.uid= $scope.uid;
+                    data.status=3;
                     console.log(data)
                     new $scope.dataResurs(data).$save().then(function(newItem){
                         $scope.dataTabsNew.push(newItem)

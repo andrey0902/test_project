@@ -1,4 +1,4 @@
-<div class='btn btn-group-justified'>
+<div class='btn btn-group-justified' ng-controller="fixedCtrl">
     <a href='#!/create'class='btn btn-success'> создать задачу
     </a>
 
@@ -16,7 +16,7 @@
     </tr>
     </thead>
     <tbody>
-    <tr ng-repeat="item in myTascks">
+    <tr ng-repeat="item in myTascks | filter:{status : 0}">
         <td>
             
                 {{$index}}
@@ -35,7 +35,7 @@
             <span class=" text-info"  type="button">{{item.priority}}</span>
         </td>
         <td>
-            <button class="btn btn-xs btn-info"  ng-click="preview(item,page)"> Просмотр</button>
+            <button class="btn btn-xs btn-info"  ng-click="preview(item)"> Просмотр</button>
         </td>
     </tr>
     </tbody>

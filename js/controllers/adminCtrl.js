@@ -1,7 +1,7 @@
 'defer'
  // new controler
 
-         App.controller('MainCtrl',function ($scope,$resource,$location, $http,$interval,$rootScope,$cookies) {
+         App.controller('adminCtrl',function ($resource,$location, $http,$interval,$rootScope,$cookies) {
              $scope.userInfo=null;
              console.log($rootScope)
              if($rootScope.userData){
@@ -45,13 +45,13 @@
              $scope.refresh();
 
                     var url={
-                        "a_tab-0"                : './tpl/main/table.html',
-                        "a_tab-1"   : './tpl/main/tableAll.html',
-                        "a_tab-2"         : './tpl/main/inVorck.html',
-                        "a_tab-3"               : './tpl/main/fixed.html',
-                        "a_tab-4"                : './tpl/main/statistic.html',
-                        "a_tab-5"      : './tpl/main/callbecForm.html',
-                        "a_tab-6"                     : './tpl/main/about.html'
+                        "Мои Ошибки"           : './tpl/main/table.html',
+                        "Все ошибки"           : './tpl/main/tableAll.html',
+                        "Принятые в работу"    : './tpl/main/inVorck.html',
+                        "Исправленые"          : './tpl/main/fixed.html',
+                        "Статистика"           : './tpl/main/statistic.html',
+                        "Обратная форма связи" : './tpl/main/callbecForm.html',
+                        "О нас"                : './tpl/main/about.html'
                     }
                     //console.log($location.hash())
                     if($location.path()=='/main'&&$location.hash()==''){
@@ -93,13 +93,13 @@ setTimeout(function () {
         $('#my a').click(function (e) {
             e.preventDefault()
             $(this).tab('show')
-          //  console.log(e.currentTarget.id)
-           // console.log(e.target.innerText=='Мои Ошибки')
+            console.log(e.target.innerText)
+            console.log(e.target.innerText=='Мои Ошибки')
             $scope.$apply(function () {
                 for(var key in url){
                     // console.log(''+key)
                     // console.log($location.hash())
-                    if( key ==e.currentTarget.id){
+                    if( key ==e.target.innerText){
                         $scope.url=url[key];
                         $scope.page=$scope.url;
                         break;
