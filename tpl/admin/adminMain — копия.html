@@ -8,15 +8,15 @@
                 </li>
             </ul>
             <div class="tab tab-content">
-                <div class="tab-pane fade" ng-class="$first?'in active':''" id="tab-{{$index}}" ng-repeat="item in adminMain.dataTabs" >
+                <div class="tab-pane fade" ng-class="$first?'in active':''" id="tab-{{$index}}" ng-repeat="item in adminMain.tabs">
 
-                    <div ng-include="adminMain.url" >
+                    <div ng-include="item.a_tab" ng-show="adminMain.showUsers">
                     </div>
-                    <!--<div ng-include="adminMain.Url" ng-show="adminMain.showUsersEdit">
-                    </div>-->
+                    <div ng-include="adminMain.Url" ng-show="adminMain.showUsersEdit">
+                    </div>
                 </div>
             </div>
         </div>
         </div>
 </div>
-<!--($first)? adminUser.Url:adminMain.Url;  ng-repeat="item in adminMain.tabs"  ng-show="adminMain.showUsers"-->
+<!--($first)? adminUser.Url:adminMain.Url;-->

@@ -1,4 +1,5 @@
-<div class='btn btn-group-justified'>
+<div ng-controller="AdminMainCtrl">
+<div class='btn btn-group-justified' >
     <a href='#!/create'class='btn btn-success'> создать задачу
     </a>
 
@@ -13,10 +14,11 @@
         <th>Дата</th>
         <th>Приоритет</th>
         <th>Просмотр</th>
+        <th>В обработку</th>
     </tr>
     </thead>
     <tbody>
-    <tr ng-repeat="item in myTascks |filter :{status:2} ">
+    <tr ng-repeat="item in adminMain.Tascks | filter:{ status:2}">
         <td>
                 {{$index}}
         </td>
@@ -24,7 +26,7 @@
            {{item.title}}
         </td>
         <td>
-            <a href="/#!/main#" ng-click="preview(item)"> {{item.shotDescpt}}</a>
+            <a href="/#!/admin/main" ng-click="adminMain.preview(item)"> {{item.shotDescpt}}</a>
         </td>
         <td>
            {{item.date}}
@@ -33,8 +35,16 @@
             <span class=" text-info"  type="button">{{item.priority}}</span>
         </td>
         <td>
-            <button class="btn btn-xs btn-info"  ng-click="preview(item,page)"> Просмотр</button>
+            <button class="btn btn-xs btn-info" data-toggle="modal"  ng-click="adminMain.setData(item);adminMain.dish(item)"> Просмотр</button>
+        </td>
+        <td>
+            <button class="btn btn-xs btn-info"  ng-click="adminMain.goToFixed(item)"> В работу</button>
         </td>
     </tr>
     </tbody>
 </table>
+
+
+
+</div>
+<!--style="display: block; padding-right: 17px;"-->

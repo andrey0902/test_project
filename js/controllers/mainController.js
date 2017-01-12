@@ -1,7 +1,6 @@
-'defer'
- // new controler
-
+ // newcontroler
          App.controller('MainCtrl',function ($scope,$resource,$location, $http,$interval,$rootScope,$cookies) {
+             var url={};
              $scope.userInfo=null;
              console.log($rootScope)
              if($rootScope.userData){
@@ -32,83 +31,43 @@
              $scope.refresh=function () {
                  $scope.myTascks=$scope.objSend.query();
              };
-
              $scope.sendStart=function () {
-                 // $http.get('./tpl/main/question/db.json').then(function (response) {
-                 //     $scope.myTascks=response.data;
-                 // })
+                 $http.get('./tpl/main/tabContent/url.json').then(function (response) {
+                    url=response.data;
+                 });
                  $http.get('./tpl/main/tabContent/myTasc.json').then(function (response) {
                      $scope.dataTabs=response.data;
                  })
              };
              $scope.sendStart();
              $scope.refresh();
-
-                    var url={
-                        "a_tab-0"                : './tpl/main/table.html',
-                        "a_tab-1"   : './tpl/main/tableAll.html',
-                        "a_tab-2"         : './tpl/main/inVorck.html',
-                        "a_tab-3"               : './tpl/main/fixed.html',
-                        "a_tab-4"                : './tpl/main/statistic.html',
-                        "a_tab-5"      : './tpl/main/callbecForm.html',
-                        "a_tab-6"                     : './tpl/main/about.html'
-                    }
                     //console.log($location.hash())
                     if($location.path()=='/main'&&$location.hash()==''){
                         $scope.url='./tpl/main/table.html';
                     }
-                    for(var key in url){
-                        // console.log(''+key)
-                        // console.log($location.hash())
-                        if( key ==$location.hash()){
-                            $scope.url=url[key];
-                            break;
-                        }
-                    }
-               // console.log($rootScope);
+
 
                 console.log('maincontroller');
 
 // switch tabs
-//              $interval(function () {
-//                  $('#my a').click(function (e) {
-//                      e.preventDefault()
-//                      $(this).tab('show')
-//                      console.log(e.target.innerText)
-//                    console.log(e.target.innerText=='Мои Ошибки')
-//                      for(var key in url){
-//                          // console.log(''+key)
-//                          // console.log($location.hash())
-//                          if( key ==e.target.innerText){
-//                              $scope.url=url[key];
-//                              break;
-//                          }
-//                      }
-//                  })
-//              },1000);
 
-setTimeout(function () {
+             $scope.action=function () {
+                 console.log('testing555')
+                 $('#my a').click(function (e) {
+                     e.preventDefault()
+                     $(this).tab('show')
+                     $scope.$apply(function () {
+                         for(var key in url){
+                             if( key ==e.currentTarget.id){
+                                 $scope.url=url[key];
+                                 $scope.page=$scope.url;
+                                 break;
+                             }
+                         }
+                     })
+                 })
+             };
 
-
-        $('#my a').click(function (e) {
-            e.preventDefault()
-            $(this).tab('show')
-          //  console.log(e.currentTarget.id)
-           // console.log(e.target.innerText=='Мои Ошибки')
-            $scope.$apply(function () {
-                for(var key in url){
-                    // console.log(''+key)
-                    // console.log($location.hash())
-                    if( key ==e.currentTarget.id){
-                        $scope.url=url[key];
-                        $scope.page=$scope.url;
-                        break;
-                    }
-                }
-            })
-        })
-
-},1000)
 
 
 //edit

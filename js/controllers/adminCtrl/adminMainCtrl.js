@@ -1,8 +1,135 @@
-'defer'
+App.directive('tabs',['$resource','$location','$http',function ($resource,$location,$http) {
+    return{
+        restrict: "A",
+        replace: true,
+        link: function(scope,element,attr){
+
+        },
+        templateUrl: './tpl/admin/adminMain.html'
+    }
+}]);
+App.directive('modal',function () {
+    return{
+        restrict: "A",
+        replace: true,
+        scope:true,
+        link: function(scope,element,attr){
+
+            scope.$on('prevModal',function (event,args) {
+                scope.prevData=args.prevData
+
+            })
+        },
+        templateUrl:'./tpl/admin/main/modal.html'
+    }
+});
  // new controler
 
-         App.controller('adminCtrl',function ($resource,$location, $http,$interval,$rootScope,$cookies) {
-             $scope.userInfo=null;
+         App.controller('AdminMainCtrl',function ($scope,$resource,$location, $http,$interval,$rootScope,$cookies) {
+             $scope.adminMain= this;
+             this.showUsers=true;
+             if($location.path()=='/admin/main'&&$location.hash()==''){
+                 this.url='./tpl/admin/main/user.html';
+             }
+
+             this.dbUrl='http://127.0.0.1:2403/user/';
+             this.dbUrlError='http://127.0.0.1:2403/error/';
+             this.objSendUser=$resource(this.dbUrl+':id',{id:'@id'});
+             this.objSendError=$resource(this.dbUrlError+':id',{id:'@id'});
+             this.Tascks=this.objSendError.query();
+             $http.get('./tpl/admin/tabContent/adminMyTasc.json').then(function (response) {
+                 $scope.adminMain.dataTabs=response.data;
+
+             });
+
+
+             this.tabs={"a_tab-0"   : "./tpl/admin/main/user.html",
+                 "a_tab-1"   : "./tpl/admin/main/tasks.html     ",
+                 "a_tab-2"   : "./tpl/admin/main/inVorks.html",
+                 "a_tab-3"   : "./tpl/admin/main/fixed.html",
+                 "a_tab-4"   : "./tpl/admin/main/statistic.html",
+                 "a_tab-5"   : "./tpl/admin/main/create.html",
+                   "prev"    :"./tpl/admin/main/prev.html"};
+
+
+
+
+        this.action=function () {
+            $('#my a').click(function (e) {
+                var i=0;
+                e.preventDefault();
+                $(this).tab('show');
+                console.log(e.currentTarget.id);
+                $scope.$apply(function () {
+                    for(var key in $scope.adminMain.tabs){
+                        i++;
+                        if(e.currentTarget.id==key){
+                            console.log($scope.adminMain.url=$scope.adminMain.tabs[key]);
+                            break;
+                        }
+                    }})
+
+            })
+        };
+//change tabs show
+        this.showTab=function (item) {
+            this.userInfo=item;
+            this.showUsers=false;
+            this.showUsersEdit=true;
+            this.url='./tpl/admin/main/edit.html';
+
+        };
+//change user
+        this.quireReg=function (data) {
+            console.log('this is pass',data.password)
+            if(data.password==undefined){
+                console.log('delete passsword')
+                delete data.password
+            }else{
+                data.password=md5(data.password)
+            }
+            data.$save();
+            this.url='./tpl/admin/main/user.html';
+        };
+
+        this.setData=function (data) {
+            $scope.adminMain.t=data;
+        }
+        this.dish=function (item) {
+            $rootScope.$broadcast('prevModal',{
+                prevData:item
+            });
+            $('#prevModal').modal();
+
+        };
+
+            this.goToFixed=function(item){
+                var i=0;
+                item.status=1;
+                item.date=new Date().getHours()+':'+ new Date().getMinutes() +' - '+ new Date().getDate()+ '.'+(new Date().getMonth()+1)+'.'+new Date().getFullYear();
+            item.$save();
+                for(i;i<this.Tascks.length;i++){
+                if(this.Tascks[i].id ==item.id){
+                    this.Tascks.splice(i,1);
+                    break;
+
+                }
+                    //console.log( this.Tascks[i].id ==item.id)
+                }
+            };
+
+
+
+
+
+
+
+
+
+             $scope.adminMain.test='adminMainTest111';
+
+         /*
+             this.userInfo=null;
              console.log($rootScope)
              if($rootScope.userData){
                  $scope.userInfo=$rootScope.userData
@@ -12,24 +139,24 @@
 
               console.log($scope.userInfo);
               console.log($cookies.getObject('test'));
-             $scope.main= true;
+             $scope.main= true;*/
 
-           const dbUrl='http://127.0.0.1:2403/error/';
-             $scope.objSend=$resource(dbUrl+':id',{id:'@id'});
+
+
 //show login
             // if($location)
 
-             $rootScope.urlPath=$location.path();
+           /*  $rootScope.urlPath=$location.path();
              $scope.$watch('urlPath',function (newVal, old) {
                  (newVal=='/main')? $scope.main= true: $scope.main= false;
 
 
 
              })
-
+*/
 //question get information
 
-             $scope.refresh=function () {
+         /*    $scope.refresh=function () {
                  $scope.myTascks=$scope.objSend.query();
              };
 
@@ -66,8 +193,8 @@
                         }
                     }
                // console.log($rootScope);
-
-                console.log('maincontroller');
+*/
+                console.log('adminMainCtrl');
 
 // switch tabs
 //              $interval(function () {
@@ -86,6 +213,7 @@
 //                      }
 //                  })
 //              },1000);
+/*
 
 setTimeout(function () {
 
@@ -110,9 +238,10 @@ setTimeout(function () {
 
 },1000)
 
+*/
 
 //edit
-                $scope.editPath=function (path) {
+       /*         $scope.editPath=function (path) {
                     $location.path(path);
                 };
                 $scope.edit=function (element) {
@@ -126,9 +255,9 @@ setTimeout(function () {
                 $scope.sendTo=function (item) {
                     $rootScope.tempItem=item;
 
-                }
+                }*/
 //delete
-             $scope.del=function(item){
+           /*  $scope.del=function(item){
                  item.$delete().then(function () {
                      $scope.myTascks.splice($scope.myTascks.indexOf(item),1)
                  })
@@ -162,7 +291,7 @@ setTimeout(function () {
 
                  // $rootScope.url='';
                  // return;
-           })
+           })*/
 
              })
 

@@ -31,12 +31,18 @@
 
              })
             $scope.pushe=function(data){
-
+                data.status=2;
+                data.date= new Date().getHours()+':'+ new Date().getMinutes() +' - '+ new Date().getDate()+ '.'+(new Date().getMonth()+1)+'.'+new Date().getFullYear();
+                 if(angular.isDefined(data)){
+                    data.$save().then(function(newItem){
+                        $location.url('/main/')
+                    })
+                }
                     console.log('push')
 
             }
             $scope.save1=function (data) {
-
+                data.date= new Date().getHours()+':'+ new Date().getMinutes() +' - '+ new Date().getDate()+ '.'+(new Date().getMonth()+1)+'.'+new Date().getFullYear();
                 if(angular.isDefined(data)){
                    data.$save().then(function(newItem){
                      $location.url('/main/')
@@ -53,7 +59,7 @@ $scope.addPost1=function (data,valid) {
 
          if($('#save').prop('checked')==true){
              $scope.save1(data);
-            // $location.url("http://localhost/#!/main");
+
          }else{
              $scope.pushe(data);
          }

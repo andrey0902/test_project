@@ -76,14 +76,16 @@
                 }
 
             };
-             console.log($rootScope.userData)
+             console.log($rootScope.userData);
             $scope.quireReg=function (userParam,isValid) {
                 if(isValid){
                     var newUser={
+                        name: userParam.name,
                         username:userParam.login,
                         password:md5(userParam.password) ,
                         hash: md5(Math.floor(Math.random()*(100))),
                         attribute:3,
+                        status:1,
                         keyWord:userParam.keyWord,
                         email:userParam.email,
                         group:userParam.group
@@ -94,7 +96,7 @@
                         console.log(a);
                     };
 
-                    $location.url("/main");
+                    $location.url("/");
 
 
                 }else{

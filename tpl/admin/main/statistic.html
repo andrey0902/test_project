@@ -1,0 +1,72 @@
+<div ng-controller="statisticCtrl">
+    <div class="panel panel-default">
+        <div class="panel panel-heading text-center">
+                Статистика
+
+        </div>
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-md-6">
+                    <table class="table table-hover text-info">
+                        <thead>
+                        <tr class="text-center">
+                            <th>Моя статистика</th>
+                            <th>&nbsp;</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>Созданых</td>
+                            <td><span class="badge badge-color">{{(data|filter :{status : 3, uid : userInfo.uid}).length }}</span></td>
+                        </tr>
+                        <tr>
+                            <td>Ждущих обработки</td>
+                            <td><span class="badge badge-color">{{(data | filter :{status : 2, uid : userInfo.uid}).length}}</span></td>
+                        </tr>
+                        <tr>
+                            <td>В работе</td>
+                            <td><span class="badge badge-color">{{(data | filter :{status: 1, uid : userInfo.uid}).length}}</span></td>
+                        </tr>
+                        <tr>
+                            <td>Исправленных</td>
+                            <td><span class="badge badge-color">{{(data | filter :{status: 0, uid : userInfo.uid}).length}}</span></td>
+                        </tr>
+                        <tr>
+                            <td>Всего записей</td>
+                            <td><span class="badge badge-color_ful">{{(data | filter :{uid : userInfo.uid}).length}}</span></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="col-md-6">
+                    <table class="table table-hover text-info">
+                        <thead>
+                        <tr class="text-center">
+                            <th>Общая статистика</th>
+                            <th>&nbsp;</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>Ждущих обработки</td>
+                            <td><span class="badge badge-color">{{(data | filter :{status : 2}).length}}</span></td>
+                        </tr>
+                        <tr>
+                            <td>В работе</td>
+                            <td><span class="badge badge-color">{{(data | filter :{status: 1}).length}}</span></td>
+                        </tr>
+                        <tr>
+                            <td>Исправленных</td>
+                            <td><span class="badge badge-color">{{(data | filter :{status: 0}).length}}</span></td>
+                        </tr>
+                        <tr>
+                            <td>Всего записей</td>
+                            <td><span class="badge badge-color_ful">{{(data | filter :{status : '!3'}).length}}</span></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

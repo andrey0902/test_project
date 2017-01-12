@@ -1,3 +1,6 @@
+[ng\:cloak],[ng-cloak],.ng-cloak{
+  display:none;
+}
 .badge-color{
  background-color:  #3678f1;
 }

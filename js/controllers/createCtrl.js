@@ -26,7 +26,7 @@
                     // data
                     data.uid= $scope.uid;
                     data.status=2;
-                    console.log(data)
+                    data.date= new Date().getHours()+':'+ new Date().getMinutes() +' - '+ new Date().getDate()+ '.'+(new Date().getMonth()+1)+'.'+new Date().getFullYear();
                     new $scope.dataResurs(data).$save().then(function(newItem){
                         $scope.dataTabsNew.push(newItem)
                         $location.url('/main/')
@@ -40,6 +40,7 @@
                     // data
                     data.uid= $scope.uid;
                     data.status=3;
+                    data.date= new Date().getHours()+':'+ new Date().getMinutes() +' - '+ new Date().getDate()+ '.'+(new Date().getMonth()+1)+'.'+new Date().getFullYear();
                     console.log(data)
                     new $scope.dataResurs(data).$save().then(function(newItem){
                         $scope.dataTabsNew.push(newItem)

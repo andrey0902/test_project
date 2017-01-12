@@ -1,0 +1,78 @@
+<div ng-controller="AdminUserCtrl as adminUser">
+<div class='btn btn-group-justified' >
+    <a href='#!/admin/create'class='btn btn-success'> создать пользователя
+    </a>
+    <a href='#!/admin/main/'ng-click="adminUser.del()" class='btn btn-danger'> удалить пользователя
+    </a>
+    <a href='#!/admin/main/' ng-click="adminUser.block()" class='btn btn-primary'> Заблокировать пользователя
+    </a>
+</div>
+
+<table class="table table-hover table-condensed">
+    <thead>
+    <tr>
+        <th>№</th>
+        <th>Выделить</th>
+        <th>Имя</th>
+        <th>логин</th>
+        <th>email</th>
+        <th>группа</th>
+        <th>статус</th>
+        <th>должность</th>
+        <th>Edit</th>
+        <th>Delete</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr ng-repeat="item in adminUser.users">
+        <td>
+            <div class="checkbox">
+                    {{$index}}
+            </div>
+        </td>
+        <td>
+            <div class="checkbox">
+                <label >
+                    <input type="checkbox"  id="check">Check
+                </label>
+            </div>
+        </td>
+        <td>
+            <div class="checkbox">
+               {{item.username}}
+             </div>
+        </td>
+        <td>
+            <div class="checkbox">
+                {{item.username}}
+            </div>
+        </td>
+        <td>
+            <div class="checkbox">
+                {{item.email}}
+            </div>
+        </td>
+        <td>
+            <div class="checkbox">
+                {{item.group}}
+            </div>
+        </td>
+        <td>
+            <div class="checkbox">
+                {{item.status}}
+            </div>
+        </td>
+        <td>
+            {{item.attribute}}
+        </td>
+        <td>
+            <button class="btn btn-xs btn-success"  ng-click="adminMain.showTab(item)"> edit</button>
+        </td>
+        <td>
+            <button class="btn btn-xs btn-warning" ng-click="adminUser.del(item)" type="button">delet</button>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</div>
+<!--ng-click="editPath('/edit')"-->

@@ -3,16 +3,16 @@
         <div class="row">
             <div class="col-md-12 text-center">
                 <h1>Вход</h1>
-                <a href="#!/admin/main">Вход1</a>
+                <a href="#!/admin/main">{{adminCtrl.islogin}}</a>
 
             </div>
         </div>
         <div class="row">
             <div class="col-md-offset-1 col-md-10">
-                <form  class="form-horizontal" name="autoForm" novalidate ng-submit="inquiry(User, autoForm.$valid)">
+                <form  class="form-horizontal" name="autoForm" novalidate ng-submit="adminCtrl.inquiry(adminCtrl.User, autoForm.$valid)">
                     <div class="form-group">
 
-                        <div class="form-group" ng-if="showErrorPassword">
+                        <div class="form-group" ng-if="adminCtrl.showErrorPassword">
                             <div class="col-md-offset-4  col-md-8 has-error ">
                                 <span>Неправильно введен логин или пароль</span>
                             </div>
@@ -21,32 +21,27 @@
                     <div class="form-group">
                         <label for="name" class="control-label col-sm-3" >Введите логин</label>
                         <div class="col-sm-8">
-                            <input type="text" id="name" name="login" class="form-control" ng-model="User.login" ng-required="requiredValue" ng-minlength="minValue" ng-maxlength="maxValue">
+                            <input type="text" id="name" name="username" class="form-control" ng-model="adminCtrl.User.username" ng-required="adminCtrl.requiredValue" ng-minlength="adminCtrl.minValue" ng-maxlength="adminCtrl.maxValue">
 
                         </div>
                     </div>
-                    <div class="form-group" ng-if="showError">
+                    <div class="form-group" ng-if="adminCtrl.showError">
                         <div class="col-md-offset-4  col-md-8 has-error ">
-                            {{getError(autoForm.login.$error)}}
-                        </div>
-                    </div>
-                    <div class="form-group" ng-if="showErrorLogin">
-                        <div class="col-md-offset-4  col-md-8 has-error ">
-                            Логин занят!
+                            {{adminCtrl.getError(autoForm.username.$error)}}
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="pass" class="col-sm-3 control-label">Введите пароль</label>
 
                         <div class="col-sm-8">
-                            <input type="text" class="form-control" id="pass" name="userPassword"  ng-model="User.password" ng-required="requiredValue" ng-minlength="minValue" ng-maxlength="maxValue">
+                            <input type="text" class="form-control" id="pass" name="userPassword"  ng-model="adminCtrl.User.password" ng-required="adminCtrl.requiredValue" ng-minlength="adminCtrl.minValue" ng-maxlength="adminCtrl.maxValue">
                         </div>
                     </div>
 
-                    <div class="form-group" ng-if="showError">
+                    <div class="form-group" ng-if="adminCtrl.showError">
                         <div class="col-md-offset-4  col-md-8 has-error ">
 
-                            {{getError(autoForm.userPassword.$error)}}
+                            {{adminCtrl.getError(autoForm.userPassword.$error)}}
                         </div>
                     </div>
                     <div class="form-group">
