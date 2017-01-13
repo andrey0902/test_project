@@ -1,10 +1,10 @@
 <div ng-controller="AdminUserCtrl as adminUser">
 <div class='btn btn-group-justified' >
-    <a href='#!/admin/create'class='btn btn-success'> создать пользователя
+    <a href='#!/admin/main'class='btn btn-success' disabled="disabled"> создать пользователя
     </a>
-    <a href='#!/admin/main/'ng-click="adminUser.del()" class='btn btn-danger'> удалить пользователя
+    <a href='#!/admin/main'ng-click="adminUser.del()" disabled="disabled" class='btn btn-danger'> удалить пользователя
     </a>
-    <a href='#!/admin/main/' ng-click="adminUser.block()" class='btn btn-primary'> Заблокировать пользователя
+    <a href='#!/admin/main' ng-click="adminUser.block()" disabled="disabled" class='btn btn-primary'> Заблокировать пользователя
     </a>
 </div>
 

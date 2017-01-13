@@ -52,7 +52,6 @@
 // switch tabs
 
              $scope.action=function () {
-                 console.log('testing555')
                  $('#my a').click(function (e) {
                      e.preventDefault()
                      $(this).tab('show')
@@ -102,8 +101,6 @@
           $rootScope.$watch('url',function (newValue,oldValue) {
 
                  if($rootScope.url){
-                     console.log('on table')
-                     console.log(newValue)
                      $scope.url='./tpl/main/' + newValue;
 
                  }
@@ -123,5 +120,5 @@
                  // return;
            })
 
-             })
+             });
 

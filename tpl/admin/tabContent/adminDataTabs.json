@@ -1,0 +1,7 @@
+﻿{"a_tab-0"   : "./tpl/admin/main/user.html",
+  "a_tab-1"   : "./tpl/admin/main/tasks.html",
+  "a_tab-2"   : "./tpl/admin/main/inVorks.html",
+  "a_tab-3"   : "./tpl/admin/main/fixed.html",
+  "a_tab-4"   : "./tpl/admin/main/statistic.html",
+  "a_tab-5"   : "./tpl/admin/main/create.html",
+  "prev"    :"./tpl/admin/main/prev.html"}

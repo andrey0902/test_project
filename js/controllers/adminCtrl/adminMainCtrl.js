@@ -1,55 +1,5 @@
-App.directive('tabs',['$resource','$location','$http',function ($resource,$location,$http) {
-    return{
-        restrict: "A",
-        replace: true,
-        link: function(scope,element,attr){
 
-        },
-        templateUrl: './tpl/admin/adminMain.html'
-    }
-}]);
-App.directive('modal',function () {
-    return{
-        restrict: "A",
-        replace: true,
-        scope:true,
-        link: function(scope,element,attr){
-            scope.goToFixed=function (item) {
-                scope.$emit('goToFixed',{
-                    message:item
-                });
-            };
-            scope.Fixed=function (item) {
-                console.log('fixeddd')
-                scope.$emit('Fixed',{
-                    message:item
-                });
-            }
-            scope.$on('prevModal',function (event,args) {
-                scope.prevData=args.prevData;
 
-            });
-            scope.$on('changeUrl',function (event,args) {
-                    scope.url=args.message;
-                console.log('URL----',args.message)
-                scope.setVariebel(scope.url)
-
-            })
-            scope.setVariebel= function (url) {
-                if(url=='./tpl/admin/main/tasks.html'){
-                    scope.event='Отправить в обработку'
-                    scope.default=true;
-                }else if(url=='./tpl/admin/main/inVorks.html'){
-                    scope.event='Исправлен'
-                }else if(url=='./tpl/admin/main/fixed.html'){
-                    scope.event='Исправлен'
-                }
-            }
-
-        },
-        templateUrl:'./tpl/admin/main/modal.html'
-    }
-});
  // new controler
 
          App.controller('AdminMainCtrl',function ($scope,$resource,$location, $http,$interval,$rootScope,$cookies) {
@@ -67,19 +17,10 @@ App.directive('modal',function () {
              $http.get('./tpl/admin/tabContent/adminMyTasc.json').then(function (response) {
                  $scope.adminMain.dataTabs=response.data;
 
+             });$http.get('./tpl/admin/tabContent/adminDataTabs.json').then(function (response) {
+                 $scope.adminMain.tabs=response.data;
+
              });
-
-
-             this.tabs={"a_tab-0"   : "./tpl/admin/main/user.html",
-                 "a_tab-1"   : "./tpl/admin/main/tasks.html",
-                 "a_tab-2"   : "./tpl/admin/main/inVorks.html",
-                 "a_tab-3"   : "./tpl/admin/main/fixed.html",
-                 "a_tab-4"   : "./tpl/admin/main/statistic.html",
-                 "a_tab-5"   : "./tpl/admin/main/create.html",
-                   "prev"    :"./tpl/admin/main/prev.html"};
-
-
-
 
         this.action=function () {
             $('#my a').click(function (e) {

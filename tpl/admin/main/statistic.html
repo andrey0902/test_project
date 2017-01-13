@@ -10,30 +10,30 @@
                     <table class="table table-hover text-info">
                         <thead>
                         <tr class="text-center">
-                            <th>Моя статистика</th>
+                            <th>За месяц статистика</th>
                             <th>&nbsp;</th>
                         </tr>
                         </thead>
                         <tbody>
                         <tr>
                             <td>Созданых</td>
-                            <td><span class="badge badge-color">{{(data|filter :{status : 3, uid : userInfo.uid}).length }}</span></td>
+                            <td><span class="badge badge-color">{{(data|filter :{status : 3}).length }}</span></td>
                         </tr>
                         <tr>
                             <td>Ждущих обработки</td>
-                            <td><span class="badge badge-color">{{(data | filter :{status : 2, uid : userInfo.uid}).length}}</span></td>
+                            <td><span class="badge badge-color">{{(data | filter :{status : 2}).length}}</span></td>
                         </tr>
                         <tr>
                             <td>В работе</td>
-                            <td><span class="badge badge-color">{{(data | filter :{status: 1, uid : userInfo.uid}).length}}</span></td>
+                            <td><span class="badge badge-color">{{(data | filter :{status: 1}).length}}</span></td>
                         </tr>
                         <tr>
                             <td>Исправленных</td>
-                            <td><span class="badge badge-color">{{(data | filter :{status: 0, uid : userInfo.uid}).length}}</span></td>
+                            <td><span class="badge badge-color">{{(data | filter :{status: 0}).length}}</span></td>
                         </tr>
                         <tr>
                             <td>Всего записей</td>
-                            <td><span class="badge badge-color_ful">{{(data | filter :{uid : userInfo.uid}).length}}</span></td>
+                            <td><span class="badge badge-color_ful">{{data.length}}</span></td>
                         </tr>
                         </tbody>
                     </table>

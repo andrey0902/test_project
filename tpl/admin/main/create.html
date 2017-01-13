@@ -1,46 +1,49 @@
-<div class='btn btn-group-justified'>
-    <a href='#!/create'class='btn btn-success'> создать задачу
-    </a>
-    <a href='#!/remove' class='btn btn-danger'> удалить
-    </a>
-    <a href='#!/send' class='btn btn-primary'> отправить в обработку
-    </a>
-</div>
+<div ng-controller="AdminMainCtrl">
+    <div class='btn btn-group-justified' >
+        <a href='#!/create'class='btn btn-success'> создать задачу
+        </a>
 
-<table class="table table-hover table-condensed">
-    <thead>
-    <tr>
-        <th>Check</th>
-        <th>Title</th>
-        <th>shotDescpt</th>
-        <th>Delete</th>
-        <th>Edit</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr ng-repeat="item in myTascks | filter : {uid : userInfo.uid, status : 3}">
-        <td>
-            <div class="checkbox">
-                <label >
-                    <input type="checkbox"  id="check">Check
-                </label>
-             </div>
-        </td>
-        <td>
-            <div class="checkbox">
-            {{item.title}}
-            </div>
-        </td>
-        <td>
-            {{item.shotDescpt}}
-        </td>
-        <td>
-            <button class="btn btn-xs btn-warning" ng-click="del(item)" type="button">delet</button>
-        </td>
-        <td>
-            <button class="btn btn-xs btn-success"  ng-click="edit(item)"> edit</button>
-        </td>
-    </tr>
-    </tbody>
-</table>
-<!--ng-click="editPath('/edit')"-->
+    </div>
+
+    <table class="table table-hover table-condensed">
+        <thead>
+        <tr>
+            <th>№</th>
+            <th>Заголовок</th>
+            <th>Краткое описание</th>
+            <th>Дата</th>
+            <th>Приоритет</th>
+            <th>Просмотр</th>
+            <th>Исправлены</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="item in adminMain.Tascks | filter:{ status:3}">
+            <td>
+                {{$index}}
+            </td>
+            <td>
+                {{item.title}}
+            </td>
+            <td>
+                <a href="/#!/admin/main" ng-click="adminMain.setData(item);adminMain.dish(item)"> {{item.shotDescpt}}</a>
+            </td>
+            <td>
+                {{item.date}}
+            </td>
+            <td>
+                <span class=" text-info"  type="button">{{item.priority}}</span>
+            </td>
+            <td>
+                <button class="btn btn-xs btn-info" data-toggle="modal"  ng-click="adminMain.setData(item);adminMain.dish(item)"> Просмотр</button>
+            </td>
+            <td>
+                <button class="btn btn-xs btn-info" disabled ng-click="adminMain.openAgain(item)"> Исправить</button>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+
+
+</div>

@@ -67,7 +67,7 @@
 
                         <div class='btn btn-group-justified'>
 
-                            <a href='#!/main'class='btn btn-info' ng-click="(default)? goToFixed(prevData):Fixed(prevData)"; data-dismiss="modal" id="Modal_id"> {{event}}
+                            <a href='#!/main'class='btn btn-info' ng-click="(default)? goToFixed(prevData):(default==undefined)?'':Fixed(prevData)"; data-dismiss="modal" id="Modal_id"> {{event}}
                             </a>
                         </div>
                     </div>
