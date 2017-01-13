@@ -14,11 +14,38 @@ App.directive('modal',function () {
         replace: true,
         scope:true,
         link: function(scope,element,attr){
-
+            scope.goToFixed=function (item) {
+                scope.$emit('goToFixed',{
+                    message:item
+                });
+            };
+            scope.Fixed=function (item) {
+                console.log('fixeddd')
+                scope.$emit('Fixed',{
+                    message:item
+                });
+            }
             scope.$on('prevModal',function (event,args) {
-                scope.prevData=args.prevData
+                scope.prevData=args.prevData;
+
+            });
+            scope.$on('changeUrl',function (event,args) {
+                    scope.url=args.message;
+                console.log('URL----',args.message)
+                scope.setVariebel(scope.url)
 
             })
+            scope.setVariebel= function (url) {
+                if(url=='./tpl/admin/main/tasks.html'){
+                    scope.event='Отправить в обработку'
+                    scope.default=true;
+                }else if(url=='./tpl/admin/main/inVorks.html'){
+                    scope.event='Исправлен'
+                }else if(url=='./tpl/admin/main/fixed.html'){
+                    scope.event='Исправлен'
+                }
+            }
+
         },
         templateUrl:'./tpl/admin/main/modal.html'
     }
@@ -44,7 +71,7 @@ App.directive('modal',function () {
 
 
              this.tabs={"a_tab-0"   : "./tpl/admin/main/user.html",
-                 "a_tab-1"   : "./tpl/admin/main/tasks.html     ",
+                 "a_tab-1"   : "./tpl/admin/main/tasks.html",
                  "a_tab-2"   : "./tpl/admin/main/inVorks.html",
                  "a_tab-3"   : "./tpl/admin/main/fixed.html",
                  "a_tab-4"   : "./tpl/admin/main/statistic.html",
@@ -59,15 +86,18 @@ App.directive('modal',function () {
                 var i=0;
                 e.preventDefault();
                 $(this).tab('show');
-                console.log(e.currentTarget.id);
                 $scope.$apply(function () {
                     for(var key in $scope.adminMain.tabs){
                         i++;
                         if(e.currentTarget.id==key){
-                            console.log($scope.adminMain.url=$scope.adminMain.tabs[key]);
+                            $scope.adminMain.url=$scope.adminMain.tabs[key];
                             break;
                         }
-                    }})
+                    }
+                    $scope.$broadcast('changeUrl',{
+                        message:$scope.adminMain.url
+                    })
+                })
 
             })
         };
@@ -83,7 +113,6 @@ App.directive('modal',function () {
         this.quireReg=function (data) {
             console.log('this is pass',data.password)
             if(data.password==undefined){
-                console.log('delete passsword')
                 delete data.password
             }else{
                 data.password=md5(data.password)
@@ -91,7 +120,7 @@ App.directive('modal',function () {
             data.$save();
             this.url='./tpl/admin/main/user.html';
         };
-
+// modal
         this.setData=function (data) {
             $scope.adminMain.t=data;
         }
@@ -102,24 +131,42 @@ App.directive('modal',function () {
             $('#prevModal').modal();
 
         };
+        $scope.$on('goToFixed',function (event,argum) {
+            $scope.adminMain.goToFixed(argum.message)
 
+        });
+             $scope.$on('Fixed',function (event,argum) {
+                 $scope.adminMain.Fixed(argum.message)
+             });
+             function serchInArr(serchElem,whereSerch) {
+                 var i=0;
+                 for(i;i<whereSerch.length;i++){
+                     if(whereSerch[i].id ==serchElem.id){
+                         whereSerch.splice(i,1);
+                         break;
+
+                     }
+                 }
+             }
             this.goToFixed=function(item){
-                var i=0;
                 item.status=1;
                 item.date=new Date().getHours()+':'+ new Date().getMinutes() +' - '+ new Date().getDate()+ '.'+(new Date().getMonth()+1)+'.'+new Date().getFullYear();
             item.$save();
-                for(i;i<this.Tascks.length;i++){
-                if(this.Tascks[i].id ==item.id){
-                    this.Tascks.splice(i,1);
-                    break;
-
-                }
-                    //console.log( this.Tascks[i].id ==item.id)
-                }
+                serchInArr(item,this.Tascks)
             };
 
-
-
+        this.Fixed=function (item) {
+            item.status=0;
+            item.date=new Date().getHours()+':'+ new Date().getMinutes() +' - '+ new Date().getDate()+ '.'+(new Date().getMonth()+1)+'.'+new Date().getFullYear();
+            item.$save();
+            serchInArr(item,this.Tascks)
+        };
+this.openAgain=function (item) {
+    item.status=1;
+    item.date=new Date().getHours()+':'+ new Date().getMinutes() +' - '+ new Date().getDate()+ '.'+(new Date().getMonth()+1)+'.'+new Date().getFullYear();
+    item.$save();
+    serchInArr(item,this.Tascks)
+}
 
 
 

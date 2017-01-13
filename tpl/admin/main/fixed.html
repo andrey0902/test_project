@@ -1,42 +1,49 @@
-<div class='btn btn-group-justified' ng-controller="fixedCtrl">
-    <a href='#!/create'class='btn btn-success'> создать задачу
-    </a>
+<div ng-controller="AdminMainCtrl">
+    <div class='btn btn-group-justified' >
+        <a href='#!/create'class='btn btn-success'> создать задачу
+        </a>
+
+    </div>
+
+    <table class="table table-hover table-condensed">
+        <thead>
+        <tr>
+            <th>№</th>
+            <th>Заголовок</th>
+            <th>Краткое описание</th>
+            <th>Дата</th>
+            <th>Приоритет</th>
+            <th>Просмотр</th>
+            <th>Исправлены</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="item in adminMain.Tascks | filter:{ status:0}">
+            <td>
+                {{$index}}
+            </td>
+            <td>
+                {{item.title}}
+            </td>
+            <td>
+                <a href="/#!/admin/main" ng-click="adminMain.setData(item);adminMain.dish(item)"> {{item.shotDescpt}}</a>
+            </td>
+            <td>
+                {{item.date}}
+            </td>
+            <td>
+                <span class=" text-info"  type="button">{{item.priority}}</span>
+            </td>
+            <td>
+                <button class="btn btn-xs btn-info" data-toggle="modal"  ng-click="adminMain.setData(item);adminMain.dish(item)"> Просмотр</button>
+            </td>
+            <td>
+                <button class="btn btn-xs btn-info"  ng-click="adminMain.openAgain(item)"> Открыть заново</button>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+
 
 </div>
-
-<table class="table table-hover table-condensed">
-    <thead>
-    <tr>
-        <th>№</th>
-        <th>Title</th>
-        <th>shotDescpt</th>
-        <th>Date</th>
-        <th>Prioriti</th>
-        <th>Edit</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr ng-repeat="item in myTascks | filter:{status : 0}">
-        <td>
-            
-                {{$index}}
-          
-        </td>
-        <td>
-           {{item.title}}
-        </td>
-        <td>
-            <a href="/#!/main#" ng-click="preview(item)"> {{item.shotDescpt}}</a>
-        </td>
-        <td>
-            13:00
-        </td>
-        <td>
-            <span class=" text-info"  type="button">{{item.priority}}</span>
-        </td>
-        <td>
-            <button class="btn btn-xs btn-info"  ng-click="preview(item)"> Просмотр</button>
-        </td>
-    </tr>
-    </tbody>
-</table>
