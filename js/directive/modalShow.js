@@ -1,4 +1,4 @@
-App.directive('modal',function () {
+app.directive('modal',function () {
     return{
         restrict: "A",
         replace: true,
@@ -27,7 +27,7 @@ App.directive('modal',function () {
                 if(url=='./tpl/admin/main/tasks.html'){
                     scope.event='Отправить в обработку';
                     scope.default=true;
-                }else if(url=='./tpl/admin/main/inVorks.html'){
+                }else if(url=='./tpl/admin/main/inWorks.html'){
                     scope.default=false;
                     scope.event='Исправлен'
                 }else if(url=='./tpl/admin/main/fixed.html'){

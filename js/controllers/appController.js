@@ -1,6 +1,6 @@
  // new controler
 
-         App.controller('AppCtrl',function ($scope,$http,$resource,$rootScope,$location,$cookies) {
+         app.controller('AppCtrl',[function ($scope,$http,$resource,$rootScope,$location,$cookies) {
             $rootScope.urlPath=null;
              $scope.newUser=null;
             $scope.showFormAuthor=true;
@@ -123,4 +123,4 @@
                      }
                  }
              }
-            })
+            }]);

@@ -1,7 +1,7 @@
 <div class="row" >
     <div class="col-md-offset-1 add_post col-md-10">
 
-        <form  name="regForm" class="form-horizontal" novalidate ng-submit=" adminMain.quireReg(adminMain.userInfo,regForm.$valid); ">
+        <form  name="regForm" class="form-horizontal" novalidate ng-submit=" editUser.queryUpdate(editUser.user, regForm.$valid); ">
             <div class="form-group text-center">
                 <h1> Данные пользователя </h1>
 
@@ -9,7 +9,7 @@
             <div class="form-group">
                 <label for="ferstName" class="control-label col-md-3"> Имя и Фамилия</label>
                 <div class="col-md-8">
-                    <input type="text" name="name" id="ferstName" ng-model="adminMain.userInfo.name" class="form-control" ng-required="requiredValue" ng-minlength="minValue" ng-maxlength="maxValue">
+                    <input type="text" name="name" id="ferstName" ng-model="editUser.user.name" class="form-control" ng-required="requiredValue" ng-minlength="minValue" ng-maxlength="maxValue">
                 </div>
                 <div class="form-group" ng-if="showError">
                     <div  class="col-md-offset-4  col-md-8 has-error ">
@@ -20,7 +20,7 @@
             <div class="form-group">
                 <label for="logi" class="control-label col-md-3">  логин</label>
                 <div class="col-md-8">
-                    <input type="text" name="login" id="logi" ng-model="adminMain.userInfo.username" class="form-control" ng-required="requiredValue" ng-minlength="minValue" ng-maxlength="maxValue">
+                    <input type="text" name="login" id="logi" ng-model="editUser.user.login" class="form-control" ng-required="requiredValue" ng-minlength="minValue" ng-maxlength="maxValue">
                 </div>
                 <div class="form-group" ng-if="showError">
                     <div  class="col-md-offset-4  col-md-8 has-error ">
@@ -31,7 +31,7 @@
             <div class="form-group">
                 <label for="em" class="control-label col-md-3"> Email</label>
                 <div class="col-md-8">
-                    <input type="email" name="email" id="em" ng-model="adminMain.userInfo.email" class="form-control" ng-required="requiredValue" ng-minlength="minValue" ng-maxlength="25">
+                    <input type="email" name="email" id="em" ng-model="editUser.user.email" class="form-control" ng-required="requiredValue" ng-minlength="minValue" ng-maxlength="25">
                 </div>
                 <div class="form-group"  ng-if="showError">
                     <div class="col-md-offset-4  col-md-8 has-error ">
@@ -42,7 +42,7 @@
             <div class="form-group">
                 <label for="pass" class="control-label col-md-3"> пароль</label>
                 <div class="col-md-8">
-                    <input type="password" name="password" id="pass" ng-model="adminMain.userInfo.password" class="form-control" ng-required="requiredValue" ng-minlength="minValue" ng-maxlength="25">
+                    <input type="password" name="password" ng-disabled="true" id="pass" ng-model="editUser.user.password" class="form-control" ng-required="requiredValue" ng-minlength="minValue" ng-maxlength="25">
                 </div>
                 <div class="form-group" ng-if="showError">
                     <div class="col-md-offset-4  col-md-8 has-error ">
@@ -53,7 +53,7 @@
             <div class="form-group">
                 <label for="secret" class="control-label col-md-3"> секретное слово</label>
                 <div class="col-md-8">
-                    <input type="text" name="userSecret" id="secret" class="form-control" ng-model="adminMain.userInfo.keyWord" ng-required="requiredValue" ng-minlength="minValue" ng-maxlength="maxValue">
+                    <input type="text" name="userSecret" id="secret" class="form-control" ng-model="editUser.user.keyWord" ng-required="requiredValue" ng-minlength="minValue" ng-maxlength="maxValue">
                 </div>
                 <div class="form-group" ng-if="showError">
                     <div class="col-md-offset-4  col-md-8 has-error ">
@@ -61,12 +61,32 @@
                     </div>
                 </div>
             </div>
-
-
             <div class="form-group">
-                <label for="group" class="control-label col-md-3">  имя группы</label>
+            <label for="group" class="control-label col-md-3">  имя группы</label>
+            <div class="col-md-8">
+                <input type="text" name="group" id="group" ng-model="editUser.user.group" class="form-control" ng-required="requiredValue" ng-minlength="minValue" ng-maxlength="25">
+            </div>
+            <div class="form-group" ng-if="showError">
+                <div class="col-md-offset-4  col-md-8 has-error ">
+                    {{getError(regForm.group.$error)}}
+                </div>
+            </div>
+        </div>
+            <div class="form-group">
+                <label for="position" class="control-label col-md-3"> Должность 1- админ</label>
                 <div class="col-md-8">
-                    <input type="text" name="group" id="group" ng-model="adminMain.userInfo.group" class="form-control" ng-required="requiredValue" ng-minlength="minValue" ng-maxlength="25">
+                    <input type="text" name="position" id="position" ng-model="editUser.user.position" class="form-control" ng-required="true" ng-minlength="1" ng-maxlength="1">
+                </div>
+                <div class="form-group" ng-if="showError">
+                    <div class="col-md-offset-4  col-md-8 has-error ">
+                        {{getError(regForm.group.$error)}}
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="status" class="control-label col-md-3">Статус</label>
+                <div class="col-md-8">
+                    <input type="text" name="position" id="status" ng-model="editUser.user.access" class="form-control" ng-required="true" ng-minlength="1" ng-maxlength="1">
                 </div>
                 <div class="form-group" ng-if="showError">
                     <div class="col-md-offset-4  col-md-8 has-error ">
@@ -76,19 +96,13 @@
             </div>
 
             <div class="form-group">
-                <div class="col-md-offset-4 col-md-3">
+                <div class="col-md-offset-3 col-md-3">
                     <input class="checkbox_save" type="checkbox" checked="checked" id="save" ng-model="data.save">
-
                     <button id="saveButton" class="btn save_post btn-info" >Сохранить</button>
 
                 </div>
             </div>
-
-
         </form>
              </div>
-
-
-        <!--ng-submit="addPost(data,addPost.$valid)"-->
     </div>
 </div>

@@ -1,0 +1,52 @@
+<div class='btn btn-group-justified'>
+    <a ui-sref="tasks.create" href=''class='btn btn-success'> создать задачу
+    </a>
+    <a href='#!/main' disabled="disabled" class='btn btn-danger'> удалить
+    </a>
+    <a href='#!/main' disabled="disabled" class='btn btn-primary'> отправить в обработку
+    </a>
+</div>
+
+<table class="table table-hover table-condensed">
+    <thead>
+    <tr>
+        <th>Отметить</th>
+        <th>Заголовок</th>
+        <th>Краткое описание</th>
+        <th>Дата</th>
+        <th>Удалить</th>
+        <th>Редактировать</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr ng-repeat="item in error.tasks | filter : {uid : error.user.id, status : 3} track by item.id">
+        <td>
+            <div class="checkbox">
+                <label >
+                    <input type="checkbox"  id="check">Check
+                </label>
+             </div>
+        </td>
+        <td>
+          <div class="checkbox">
+            {{item.title}}
+          </div>
+        </td>
+        <td>
+          {{item.shotDescpt}}
+        </td>
+        <td>
+            {{item.date}}
+        </td>
+        <td>
+            <button class="btn btn-xs btn-warning" ng-click="error.del(item)"  type="button">delete</button>
+        </td>
+        <td>
+            <a class="btn btn-xs btn-success" href=""  ui-sref="tasks.edit({id: item.id})"> edit</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+<div ng-cloak="" ng-if="((error.tasks | filter : {uid : userInfo.uid, status : 3}).length == 0)?true:false;" class="panel-default text-center">
+    <h3>у вас нет не обработаных задач!</h3>
+</div>

@@ -1,6 +1,6 @@
  // new controler
 
-         App.controller('CreateCtrl',function ($scope,$http,$resource,$location,$cookies) {
+ app.controller('CreateCtrl',function ($scope,$http,$resource,$location,$cookies) {
              const baseUrl='http://127.0.0.1:2403/error/';
              $scope.dataTabsNew=[];
             $scope.dataResurs=$resource(baseUrl+':id',{id:"@id"})

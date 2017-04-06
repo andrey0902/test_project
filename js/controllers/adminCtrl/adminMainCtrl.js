@@ -2,7 +2,7 @@
 
  // new controler
 
-         App.controller('AdminMainCtrl',function ($scope,$resource,$location, $http,$interval,$rootScope,$cookies) {
+ app.controller('AdminMainCtrl',function ($scope,$resource,$location, $http,$interval,$rootScope,$cookies) {
              $scope.adminMain= this;
              this.showUsers=true;
              if($location.path()=='/admin/main'&&$location.hash()==''){

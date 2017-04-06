@@ -1,6 +1,6 @@
  // new controler
 
-         App.controller('EditCtrl',function ($scope,$http,$resource,$location,$rootScope) {
+ app.controller('EditCtrl',function ($scope,$http,$resource,$location,$rootScope) {
 
              const baseUrl='http://127.0.0.1:2403/error/';
 

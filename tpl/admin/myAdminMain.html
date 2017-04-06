@@ -1,0 +1,17 @@
+<div class="container">
+    <div class="row">
+        <div class=" col-md-12">
+            <div class="tabs">
+                <ul class="nav nav-tabs nav-justifid" role="tabs">
+                    <li  ui-sref-active="active"  ng-repeat="item in main.modules track by $index">
+                        <a href="" ui-sref="admin.{{item.title}}">{{item.name}}</a>
+                    </li>
+                </ul>
+                <div ui-view></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

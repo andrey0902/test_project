@@ -1,7 +1,7 @@
 
  // new controler
 
-         App.controller('AdminUserCtrl',function ($resource,$location, $http,$interval,$rootScope,$cookies) {
+ app.controller('AdminUserCtrl',function ($resource,$location, $http,$interval,$rootScope,$cookies) {
             // $scope.adminUser= this;
              this.dbUrl='http://127.0.0.1:2403/user/';
 

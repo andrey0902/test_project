@@ -1,0 +1,59 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 text-center">
+      <h2 class="login">Вход</h2>
+    </div>
+    <form class="form-horizontal" name="autoForm" novalidate ng-submit="login.inquiry(login.User, autoForm.$valid)">
+      <div class="form-group">
+        <label for="name" class="control-label col-sm-offset-3 col-sm-2" >Введите логин</label>
+        <div class="col-sm-4">
+          <input type="text" id="name" name="login" class="form-control" ng-model="login.User.login" ng-required="login.required" ng-minlength="login.minValue" ng-maxlength="login.maxValue">
+        </div>
+      </div>
+      <div ng-if="autoForm.login.$touched">
+        <div ng-messages="autoForm.login.$error" >
+          <ng-messages-include src="tpl/validation/loginvalid.html"></ng-messages-include>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="pass" class="col-sm-offset-3 col-sm-2 control-label">Введите пароль</label>
+        <div class="col-sm-4">
+          <input type="password" class="form-control" id="pass" name="userPassword"  ng-model="login.User.password" ng-required="login.required" ng-minlength="login.minValue" ng-maxlength="login.maxValue">
+        </div>
+      </div>
+      <div ng-if="login.error">
+        <div class="col-md-offset-5  col-md-6 has-error ">
+        Неправильно введен логин или пароль!
+        </div>
+      </div>
+      <div ng-if="autoForm.userPassword.$touched">
+        <div ng-messages="autoForm.userPassword.$error" >
+          <ng-messages-include src="tpl/validation/loginvalid.html"></ng-messages-include>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="col-sm-offset-5 col-sm-5">
+          <div class="checkbox">
+            <label class="control-label">
+              <input type="checkbox">Запомнить в системе
+            </label>
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class=" col-md-offset-5 col-sm-2 ">
+          <button type="submit" class="btn bg-primary">ВХОД</button>
+        </div>
+      </div>
+      <div class="form-group reg_dop">
+        <div class="col-md-offset-5 col-sm-2">
+          <a ui-sref="recovery" href=""> Забыли логин или пароль? </a>
+        </div>
+        <div class=" col-sm-4">
+          <a ui-sref="register" href="">Регистрация</a>
+        </div>
+      </div>
+
+    </form>
+  </div>
+</div>

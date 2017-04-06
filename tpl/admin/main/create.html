@@ -1,8 +1,6 @@
-<div ng-controller="AdminMainCtrl">
+<div>
     <div class='btn btn-group-justified' >
-        <a href='#!/create'class='btn btn-success'> создать задачу
-        </a>
-
+        <a href='' ui-sref="admin.create-task" class='btn btn-success'> создать задачу</a>
     </div>
 
     <table class="table table-hover table-condensed">
@@ -18,7 +16,7 @@
         </tr>
         </thead>
         <tbody>
-        <tr ng-repeat="item in adminMain.Tascks | filter:{ status:3}">
+        <tr ng-repeat="item in tasks.tasks | filter:{ status:3}">
             <td>
                 {{$index}}
             </td>
@@ -26,7 +24,7 @@
                 {{item.title}}
             </td>
             <td>
-                <a href="/#!/admin/main" ng-click="adminMain.setData(item);adminMain.dish(item)"> {{item.shotDescpt}}</a>
+                <a href="" ui-sref="admin.preview({preview: 'create-tasks', id: item.id})"> {{item.shotDescpt}}</a>
             </td>
             <td>
                 {{item.date}}
@@ -35,7 +33,7 @@
                 <span class=" text-info"  type="button">{{item.priority}}</span>
             </td>
             <td>
-                <button class="btn btn-xs btn-info" data-toggle="modal"  ng-click="adminMain.setData(item);adminMain.dish(item)"> Просмотр</button>
+                <a  class="btn btn-xs btn-info" href="" ui-sref="admin.preview({preview: 'create-tasks', id: item.id})"> Просмотр</a>
             </td>
             <td>
                 <button class="btn btn-xs btn-info" disabled ng-click="adminMain.openAgain(item)"> Исправить</button>
@@ -43,7 +41,4 @@
         </tr>
         </tbody>
     </table>
-
-
-
 </div>

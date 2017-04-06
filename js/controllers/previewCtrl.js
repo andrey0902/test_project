@@ -1,6 +1,6 @@
  // new controler
 
-         App.controller('previewCtrl',function ($scope,$http,$resource,$location,$rootScope) {
+ app.controller('previewCtrl',function ($scope,$http,$resource,$location,$rootScope) {
              $rootScope.url=null;
 
              const baseUrl='http://127.0.0.1:2403/error/';

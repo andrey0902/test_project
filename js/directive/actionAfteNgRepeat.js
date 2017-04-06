@@ -1,4 +1,4 @@
-App.directive('onFinishRender',['$timeout','$parse',function($timeout,$parse){
+app.directive('onFinishRender',['$timeout','$parse',function($timeout,$parse){
     return {
         restrict: 'A',
         link: function (scope, element, attr) {

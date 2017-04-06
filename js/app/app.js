@@ -1,2 +1,7 @@
   // new model
-        var App= angular.module('App',['ngRoute','ngResource','ngCookies']);
+let app = angular.module('app', [
+            'ui.router',
+            'ngResource',
+            'ngCookies',
+            'ngMessages'
+        ]);

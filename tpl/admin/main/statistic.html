@@ -1,8 +1,7 @@
-<div ng-controller="statisticCtrl">
+<div>
     <div class="panel panel-default">
         <div class="panel panel-heading text-center">
                 Статистика
-
         </div>
         <div class="panel-body">
             <div class="row">
@@ -17,23 +16,23 @@
                         <tbody>
                         <tr>
                             <td>Созданых</td>
-                            <td><span class="badge badge-color">{{(data|filter :{status : 3}).length }}</span></td>
+                            <td><span class="badge badge-color">{{(stat.tasks|filter :{status : 3}).length }}</span></td>
                         </tr>
                         <tr>
                             <td>Ждущих обработки</td>
-                            <td><span class="badge badge-color">{{(data | filter :{status : 2}).length}}</span></td>
+                            <td><span class="badge badge-color">{{(stat.tasks | filter :{status : 2}).length}}</span></td>
                         </tr>
                         <tr>
                             <td>В работе</td>
-                            <td><span class="badge badge-color">{{(data | filter :{status: 1}).length}}</span></td>
+                            <td><span class="badge badge-color">{{(stat.tasks | filter :{status: 1}).length}}</span></td>
                         </tr>
                         <tr>
                             <td>Исправленных</td>
-                            <td><span class="badge badge-color">{{(data | filter :{status: 0}).length}}</span></td>
+                            <td><span class="badge badge-color">{{(stat.tasks | filter :{status: 0}).length}}</span></td>
                         </tr>
                         <tr>
                             <td>Всего записей</td>
-                            <td><span class="badge badge-color_ful">{{data.length}}</span></td>
+                            <td><span class="badge badge-color_ful">{{stat.tasks.length}}</span></td>
                         </tr>
                         </tbody>
                     </table>
@@ -49,19 +48,19 @@
                         <tbody>
                         <tr>
                             <td>Ждущих обработки</td>
-                            <td><span class="badge badge-color">{{(data | filter :{status : 2}).length}}</span></td>
+                            <td><span class="badge badge-color">{{(stat.tasks | filter :{status : 2}).length}}</span></td>
                         </tr>
                         <tr>
                             <td>В работе</td>
-                            <td><span class="badge badge-color">{{(data | filter :{status: 1}).length}}</span></td>
+                            <td><span class="badge badge-color">{{(stat.tasks | filter :{status: 1}).length}}</span></td>
                         </tr>
                         <tr>
                             <td>Исправленных</td>
-                            <td><span class="badge badge-color">{{(data | filter :{status: 0}).length}}</span></td>
+                            <td><span class="badge badge-color">{{(stat.tasks | filter :{status: 0}).length}}</span></td>
                         </tr>
                         <tr>
                             <td>Всего записей</td>
-                            <td><span class="badge badge-color_ful">{{(data | filter :{status : '!3'}).length}}</span></td>
+                            <td><span class="badge badge-color_ful">{{(stat.tasks | filter :{status : '!3'}).length}}</span></td>
                         </tr>
                         </tbody>
                     </table>

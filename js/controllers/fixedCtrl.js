@@ -1,6 +1,6 @@
  // new controler
 
-         App.controller('fixedCtrl',function ($scope,$http,$resource,$location,$rootScope) {
+ app.controller('fixedCtrl',function ($scope,$http,$resource,$location,$rootScope) {
              $rootScope.url=null;
              $rootScope.urlPage=null;
              const baseUrl='http://127.0.0.1:2403/error/';

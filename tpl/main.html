@@ -1,85 +1,14 @@
-<div class="row" ng-controller="MainCtrl">
+<div class="row">
     <div class="col-md-offset-1 col-md-10">
-      <!--  <div class=" tabs main_container">
-            <ul class="nav nav-justifid nav-tabs" id="my-ta" role="tabs">
-
-                <li class="active"><a href="/#!/main/#bat-1" data-toggle="tab"> Мои Ошибки </a> </li>
-                <li ><a href="/#!/main/#bat-2" data-toggle="tab"> Все ошибки </a> </li>
-                <li ><a href="/#!/main/#bat-3" data-toggle="tab"> Принятые в работу </a> </li>
-                <li ><a href="/#!/main/#bat-4" data-toggle="tab"> Исправленые </a> </li>
-                <li ><a href="/#!/main/#bat-7" data-toggle="tab"> Статистика</a> </li>
-                <li ><a href="/#!/main/#bat-5" data-toggle="tab"> Обратная форма связи </a> </li>
-                <li ><a href="/#!/main/#bat-6" data-toggle="tab"> О нас </a> </li>
-            </ul>
-        </div>
-        <div class="tab-content">
-
-            <div class="tab-pane fade in active " id="bat-1">
-                <div class="btn btn-group-justified">
-                    <a href="#!/create" class="btn btn-success"> создать задачу </a>
-                    <a href="#!/edit" class="btn btn-warning"> редактировать задачу </a>
-                    <a href="#!/remove" class="btn btn-danger"> удалить задачу </a>
-                    <a href="#!/send" class="btn btn-primary"> отправить в обработку </a>
-                </div>
-            </div>
-            <div class="tab-pane fade" id="bat-2">
-                other error
-            </div>
-            <div class="tab-pane fade" id="bat-3">
-                Принятые в работу
-            </div>
-            <div class="tab-pane fade" id="bat-4">
-                Исправленые
-            </div>
-            <div class="tab-pane fade" id="bat-7">
-                Статистика
-            </div>
-            <div class="tab-pane fade" id="bat-5">
-                Обратная форма связи
-            </div>
-            <div class="tab-pane fade" id="bat-6">
-                О нас
-            </div>
-        </div>-->
-        <div class="tabs">
-            <ul class="nav nav-tabs nav-justifid" id="my" role="tabs">
-                <li ng-class="$first?'active':''" ng-repeat="item in dataTabs" on-finish-render="action()">
-                    <a href="/#!/main#tab-{{$index}}" id="a_tab-{{$index}}" data-toggle="tab">{{item.name}}</a>
-                </li>
-            </ul>
-            <div class="tab tab-content">
-                <div class="tab-pane fade" ng-class="$first?'in active':''" id="tab-{{$index}}" ng-repeat="item in dataTabs">
-                    <div id="content-{{$index}}">
-                       <div>
-                           <div ng-include="url" >
-                           </div>
-                       </div>
-                    </div>
-
-
-                </div>
-            </div>
-        </div>
-            <!--<div class="tabs main_container">-->
-                <!--<ul class="nav nav-justifid nav-tabs" id="my-tab" >-->
-                    <!--<li id="tabs-{{$index}}" ng-class="$first?'active':''" ng-repeat="item in dataTabs">-->
-                        <!--<a href="/#!/main/#bat-{{$index}}" data-toggle="tab" >{{item.name}}-->
-                        <!--</a>-->
-                    <!--</li>-->
-                <!--</ul>-->
-                <!--<div class="tab-content" >-->
-                    <!--<div class="tab-pane fade" ng-class="$first?'in active':''" id="bat-{{$index}}"  ng-repeat="item in dataTabs">-->
-                        <!--<div id="tabContent-{{$index}}" >-->
-                            <!--{{item.name}}-->
-                        <!--</div>-->
-                        <!--<div ng-include="url" id="table-include-{{$index}}">-->
-                        <!--</div>-->
-                    <!--</div>-->
-                <!--</div>-->
-            <!--</div>-->
-        </div>
-
-
-
-
+      <div>
+        <ul class="nav nav-tabs nav-justifid" >
+          <li ui-sref-active="active" ng-repeat="task in tasks.modules track by $index">
+            <a ui-sref="tasks.{{task.title}}" href="">{{task.name}}</a>
+          </li>
+        </ul>
+        <div ui-view></div>
+      </div>
+   </div>
 </div>
+
+

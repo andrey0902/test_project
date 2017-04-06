@@ -1,5 +1,5 @@
  // newcontroler
-         App.controller('MainCtrl',function ($scope,$resource,$location, $http,$interval,$rootScope,$cookies) {
+ app.controller('MainCtrl',function ($scope,$resource,$location, $http,$interval,$rootScope,$cookies) {
              var url={};
              $scope.userInfo=null;
              console.log($rootScope)
@@ -26,7 +26,7 @@
 
              })
 
-//question get information
+//questi    on get information
 
              $scope.refresh=function () {
                  $scope.myTascks=$scope.objSend.query();

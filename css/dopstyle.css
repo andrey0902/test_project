@@ -1,15 +1,53 @@
 [ng\:cloak],[ng-cloak],.ng-cloak{
   display:none;
 }
+.ng-scope {
+   margin-top: 0!important;
+}
+.login{
+  margin-top: 100px;
+  margin-bottom: 30px;
+}
+.row {
+ margin-right: 0;
+}
+body,html{
+  font-size: 1em;
+  width: 100%;
+  height: 100%;
+}
+.tabs{
+  padding-bottom: 3em;
+  height: 40rem;
+}
+.wrapper1{
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  width: 100%;
+  bottom: 30px;
+}
+.wrapper{
+  min-height: 100%;
+  overflow: hidden;
+  position: relative;
+}
+.wrapper:after{
+  content: '';
+  height: 40px;
+}
+.footer-block{
+  margin-top: -40px;
+  height: 40px;
+  background-color: #002b48;
+}
 .badge-color{
  background-color:  #3678f1;
 }
 .badge-color_ful{
   background-color: #4fd654;
 }
-.save_post{
-  margin-left: 14%;
-}
+
 .checkbox_save{
   display:none ;
 }
@@ -59,8 +97,8 @@ button{
   /*height:10px;*/
   color: #ff2e52;
 }
-.head-block,.footer-block{
-  margin-top: 0px;
+.head-block{
+  margin-top: 0;
   height: 40px;
 background-color: #002b48;
 }
@@ -71,7 +109,17 @@ background-color: #002b48;
 }
 .col-md-1{
   border: 1px solid black;
-
+}
+.text-name{
+  color: #cbcfd2;
+}
+.my-head{
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+.my-btn{
+  margin-right: 1rem;
 }
 .logo{
   padding-top: 5px;
@@ -93,12 +141,12 @@ background-color: #002b48;
   font-size: 46px;
   padding-top:20px;
 }
-.footer-block{
+/*.footer-block{
   height: 120px;
 }
 .bottom{
   height: 100px;
-}
+}*/
 .col-md-12.ng-scope > h1{
   text-align: center;
 }

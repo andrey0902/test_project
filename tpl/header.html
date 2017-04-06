@@ -1,0 +1,15 @@
+<div>
+  <div class="row  head-block my-head">
+    <div class="pull-right text-name" ng-if="head.user"><b>Здравствуй: {{head.user.name}}</b>
+    <button class="my-btn btn btn-group-sm btn-danger" ng-click="head.logOut()">Logout</button>
+    </div>
+  </div>
+  <div class="row head-block_2">
+    <div class="col-sm-offset-2 col-sm-4 logo">
+      <a href="" ui-sref="tasks.error"><img src="img/BA_new_icon.png" alt="logo"></a>
+    </div>
+    <div class="col-sm-offset-0 col-sm-2 ">
+      <a href="" ui-sref="tasks.error"><img  class="back-logo" src="img/logo.gif" alt="logo"></a>
+    </div>
+  </div>
+</div>

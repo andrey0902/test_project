@@ -1,0 +1,45 @@
+<div class="container">
+  <div class="row">
+    <h1 class="text-center">Восстановление пароля</h1>
+      <div class="col-md-offset-2  col-md-10">
+        <form name="recoveryForm" class="form-horizontal" novalidate ng-submit="recovery.inquiry(recovery.userRecovery,recoveryForm.$valid)">
+          <div class="form-group">
+            <label for="loginOEmail" class="control-label col-md-4"> Введите логин или email</label>
+            <div class=" col-md-6">
+              <input type="text" name="userRecoverData" id="loginOEmail" class="form-control" ng-model="recovery.userRecovery.Data" ng-required="recovery.requiredValue" ng-minlength="recovery.minValue" ng-maxlength="recovery.maxValue">
+            </div>
+            <div class="form-group" ng-if="showError">
+              <div class="col-md-offset-4  col-md-8 has-error ">
+                {{getError(recoveryForm.userRecoverData.$error)}}
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="secret" class="control-label col-md-4"> Введите секретное слово</label>
+            <div class="col-md-6">
+              <input type="text" name="userSecret" id="secret" class="form-control" ng-model="recovery.userRecovery.secret" ng-required="recovery.requiredValue" ng-minlength="recovery.minValue" ng-maxlength="recovery.maxValue">
+            </div>
+            <div class="form-group" ng-if="showError">
+              <div class="col-md-offset-4  col-md-8 has-error ">
+                {{getError(recoveryForm.userSecret.$error)}}
+              </div>
+            </div>
+          </div>
+          <div class="form-group ">
+            <div class="col-md-offset-4 col-md-3">
+              <button class="btn btn-primary" type="submit">Отправить</button>
+            </div>
+          </div>
+          <div class="form-group reg_dop">
+            <div class="col-md-offset-4 col-sm-2">
+              <a ui-sref="login" href="" > Вход </a>
+            </div>
+            <div class=" col-sm-4">
+              <a ui-sref="register" href="" >Регистрация</a>
+            </div>
+          </div>
+        </form>
+      </div>
+  </div>
+  </div>
+</div>

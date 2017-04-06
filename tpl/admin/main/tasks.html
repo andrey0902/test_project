@@ -1,10 +1,7 @@
-<div ng-controller="AdminMainCtrl">
+<div>
 <div class='btn btn-group-justified' >
-    <a href='#!/create'class='btn btn-success'> создать задачу
-    </a>
-
+    <a href='' ui-sref="admin.create-task" class='btn btn-success'> создать задачу</a>
 </div>
-
 <table class="table table-hover table-condensed">
     <thead>
     <tr>
@@ -18,33 +15,37 @@
     </tr>
     </thead>
     <tbody>
-    <tr ng-repeat="item in adminMain.Tascks | filter:{ status:2}">
+    <tr ng-repeat="item in send.task | filter: {status: 2}">
         <td>
-                {{$index}}
+          {{$index}}
         </td>
         <td>
            {{item.title}}
         </td>
         <td>
-            <a href="/#!/admin/main" ng-click="adminMain.preview(item)"> {{item.shotDescpt}}</a>
+            <a href="" ui-sref="admin.preview({preview: 'a-send-to-work', id : item.id})"> {{item.shotDescpt}}</a>
         </td>
         <td>
            {{item.date}}
         </td>
         <td>
-            <span class=" text-info"  type="button">{{item.priority}}</span>
+            <span class="text-info">{{item.priority}}</span>
         </td>
         <td>
-            <button class="btn btn-xs btn-info" data-toggle="modal"  ng-click="adminMain.setData(item);adminMain.dish(item)"> Просмотр</button>
+            <a href="" class="btn btn-xs btn-info" ui-sref="admin.preview({preview: 'a-send-to-work', id : item.id})"> Просмотр</a>
         </td>
         <td>
-            <button class="btn btn-xs btn-info"  ng-click="adminMain.goToFixed(item)"> В работу</button>
+            <button class="btn btn-xs btn-info"  ng-click="send.goToFixed(item.id)"> В работу</button>
         </td>
     </tr>
     </tbody>
 </table>
-
-
-
 </div>
-<!--style="display: block; padding-right: 17px;"-->
+<div class="section">
+    <div class="wrapper1">
+        <ul class="pagination">
+            <li ng-repeat=" pages in send.bootPage" >
+                <a href="" ng-click="send.showPages(pages.link)" ng-bind-html="pages.name"></a></li>
+        </ul>
+    </div>
+</div>

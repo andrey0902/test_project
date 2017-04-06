@@ -1,7 +1,7 @@
 'defer';
  // new controler
 
-         App.controller('adminCtrl',function ($resource,$location, $http,$interval,$rootScope,$cookies) {
+app.controller('adminCtrl',function ($resource,$location, $http,$interval,$rootScope,$cookies) {
         this.data=null;
         this.requiredValue = true;
         this.minValue = 3;

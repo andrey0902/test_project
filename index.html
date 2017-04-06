@@ -1,77 +1,83 @@
 <!DOCTYPE HTML>
-<html ng-app="App">
+<html ng-app="app">
 <head>
 
 <meta charset="utf-8" >
-<title> Заголовок </title>
-<meta name="description" content=" Уроки по html">
+<title> Back Track </title>
+<meta name="description" content="">
 <meta name="keywords" content=" Описание о чем наш сайт для поисковых систем ">
-<!-- подключение файла webserwer css -->
 
+    <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="css/dopstyle.css">
+</head>
+<body >
+  <div class="wrapper">
+    <header></header>
+    <div ng-view=""></div>
+    <div ui-view></div>
+  </div>
+  <!--<div class="row  bottom"></div>-->
+ <footer class="footer-block"></footer>
 
 
 
 
     <script src="./node_modules/jquery/dist/jquery.js"></script>
-    <script src='./node_modules/blueimp-md5/js/md5.min.js'> </script>
+    <script src='./node_modules/bootstrap/dist/js/bootstrap.js'></script>
 
-    <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.css">
-    <script src='./node_modules/bootstrap/dist/js/bootstrap.js'> </script>
+    <script src="node_modules/angular/angular.min.js"></script>
 
-    <!--<link rel="stylesheet" href="css/bootstrap-theme.css">-->
-    <link rel="stylesheet" href="css/dopstyle.css">
+    <script src="node_modules/angular-ui-router/release/angular-ui-router.min.js"></script>
 
-    <script src="js/lib/angular.js"></script>
-    <script src='./node_modules/angular-cookies/angular-cookies.min.js'> </script>
-    <script src="js/lib/angular-route.js"></script>
-    <script type="text/javascript" src="js/lib/resurse.js"></script>
-    <script src="js/lib/bootstrap.js"></script>
+    <script src='node_modules/angular-cookies/angular-cookies.min.js'></script>
+    <script src='node_modules/angular-messages/angular-messages.min.js'></script>
+
+    <script src="node_modules/lodash/lodash.min.js"></script>
+
+    <script type="text/javascript" src="js/lib/resurce.js"></script>
     <script src="js/app/app.js"></script>
-    <script src="js/directive/actionAfteNgRepeat.js"></script>
-    <script src="js/directive/modalShow.js"></script>
+    <script src="js/factories/DBUsers.js"></script>
+    <script src="js/factories/dbgetData.js"></script>
+    <script src="js/factories/dbgetDataAdmin.js"></script>
+    <script src="js/factories/tasksPaginator.js"></script>
+
+    <script src="js/directive/header.js"></script>
+    <script src="js/directive/error.js"></script>
+    <script src="js/directive/edit.js"></script>
+    <script src="js/directive/create.js"></script>
+    <script src="js/directive/inWork.js"></script>
+    <script src="js/directive/send-to-work.js"></script>
+    <script src="js/directive/done.js"></script>
+    <script src="js/directive/statistic.js"></script>
+  <script src="js/directive/preview.js"></script>
+
+  <script src="js/directive/admin/adminLogin.js"></script>
+  <script src="js/directive/admin/main.js"></script>
+  <script src="js/directive/admin/users.js"></script>
+  <script src="js/directive/admin/editUser.js"></script>
+  <script src="js/directive/admin/sent-to-work.js"></script>
+  <script src="js/directive/admin/preview.js"></script>
+  <script src="js/directive/admin/inWork.js"></script>
+  <script src="js/directive/admin/done.js"></script>
+  <script src="js/directive/admin/statistics.js"></script>
+  <script src="js/directive/admin/usersTasks.js"></script>
+  <script src="js/directive/admin/creatTask.js"></script>
+
+
+
+    <script src="js/directive/login.js"></script>
+    <script src="js/directive/recovery.js"></script>
+    <script src="js/directive/register.js"></script>
+    <script src="js/directive/tasks.js"></script>
+
+
+  <script src="js/router/routerModul.js"></script>
+
+
     <script src="js/directive/admin.js"></script>
-    <script src="js/controllers/appController.js"></script>
-    <script src="js/controllers/mainController.js"></script>
-    <script src="./js/controllers/createCtrl.js"></script>
-    <script src="./js/controllers/editCtrl.js"></script>
-    <script src="./js/controllers/previewCtrl.js"></script>
-    <script src="./js/controllers/inVorck.js"></script>
-    <script src="./js/controllers/fixedCtrl.js"></script>
-    <script src="./js/controllers/statistic.js"></script>
-    <script src="./js/controllers/adminCtrl/adminCtrl.js"></script>
-    <script src="./js/controllers/adminCtrl/adminMainCtrl.js"></script>
-    <script src="./js/controllers/adminCtrl/adminUserCtrl.js"></script>
-    <script src="js/router/routerModul.js"></script>
 
 
-</head>
 
-<body >
-
-    <div class="container-fluid"  >
-        <div class="row  head-block" ng-controller="MainCtrl">
-            <div class="col-md-offset-9 text-info" ng-if="main"><b>Здравствуй: {{userInfo.name}}</b> </div>
-        </div>
-        <div class="row head-block_2">
-            <div class="col-sm-offset-2 col-sm-4 logo">
-                <a href="#!/"><img src="img/BA_new_icon.png" alt=""></a>
-            </div>
-            <div class="col-sm-offset-0 col-sm-2 ">
-                <a href="#!/"><img  class="back-logo" src="img/logo.gif" alt=""></a>
-            </div>
-        </div>
-
-
-        <div ng-view></div>
-
-
-        <div class="row  bottom">
-        </div>
-        <footer class="row  footer-block">
-        </footer>
-
-
-    </div>
 
 
 

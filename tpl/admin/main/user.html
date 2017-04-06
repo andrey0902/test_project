@@ -1,10 +1,10 @@
-<div ng-controller="AdminUserCtrl as adminUser">
+<div >
 <div class='btn btn-group-justified' >
-    <a href='#!/admin/main'class='btn btn-success' disabled="disabled"> создать пользователя
+    <a href=''class='btn btn-success' disabled="disabled"> создать пользователя
     </a>
-    <a href='#!/admin/main'ng-click="adminUser.del()" disabled="disabled" class='btn btn-danger'> удалить пользователя
+    <a href=''ng-click="adminUser.del()" disabled="disabled" class='btn btn-danger'> удалить пользователя
     </a>
-    <a href='#!/admin/main' ng-click="adminUser.block()" disabled="disabled" class='btn btn-primary'> Заблокировать пользователя
+    <a href='' ng-click="adminUser.block()" disabled="disabled" class='btn btn-primary'> Заблокировать пользователя
     </a>
 </div>
 
@@ -24,7 +24,7 @@
     </tr>
     </thead>
     <tbody>
-    <tr ng-repeat="item in adminUser.users">
+    <tr ng-repeat="item in users.usersInPage track by $index">
         <td>
             <div class="checkbox">
                     {{$index}}
@@ -66,13 +66,22 @@
             {{item.attribute}}
         </td>
         <td>
-            <button class="btn btn-xs btn-success"  ng-click="adminMain.showTab(item)"> edit</button>
+            <a class="btn btn-xs btn-success"  ui-sref="admin.edit({id: item.id})"> edit</a>
         </td>
         <td>
-            <button class="btn btn-xs btn-warning" ng-click="adminUser.del(item)" type="button">delet</button>
+            <button class="btn btn-xs btn-warning" ng-click="users.del(item.id)" type="button">delet</button>
         </td>
     </tr>
     </tbody>
 </table>
 </div>
-<!--ng-click="editPath('/edit')"-->
+
+    <div class="section">
+       <div class="wrapper1">
+           <ul class="pagination">
+               <li ng-repeat=" pages in users.pages" >
+                   <a href="" ng-click="users.showPages(pages.link)" ng-bind-html="pages.name"></a></li>
+           </ul>
+       </div>
+    </div>
+
