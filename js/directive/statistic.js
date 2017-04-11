@@ -10,8 +10,7 @@ angular.module('app').directive('statistics', [()=>{
             this.user =$cookies.getObject('user');
 
             this.tasks = dbgetData.getTasks();
-            console.log('statistic', this.user );
         },
-        templateUrl: 'tpl/main/MyStatistic.html'
+        templateUrl: 'tpl/main/myStatistic.html'
     }
 }]);

@@ -13,10 +13,11 @@ angular.module('app').directive('adminInWork', [()=>{
             this.tasks = dbAdmin.getTasks();
 
             this.goToFixed = (id) => {
-                dbAdmin.changeStatus({id,
+                dbAdmin.changeStatus({
+                    id,
                     status: 0})
             };
-            console.log('this is admin in works-+');
+
         },
         templateUrl: 'tpl/admin/main/inWorks.html'
     }

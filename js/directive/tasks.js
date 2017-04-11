@@ -9,9 +9,8 @@ app.directive('tasks', [()=>{
                 $state.go('login');
             }
 
-
             this.modules = dbgetData.getModules();
-            console.log('this is $cookies', $cookies.getObject('user'));
+
         },
         templateUrl: 'tpl/main.html'
     }

@@ -26,7 +26,7 @@ angular.module('app').factory('tasksPaginator', ['dbgetData', '$sce',(dbgetData,
             this.allTasks = _.filter(this.fullTasks, {status: '2'});
             let arrLength = this.allTasks.length;
             lastElement = (lastElement > arrLength)? arrLength : lastElement;
-            console.log('lastElement',lastElement, this.allTasks)
+
             return this.allTasks.splice(firstElement, lastElement);
 
 

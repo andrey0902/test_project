@@ -1,4 +1,4 @@
-angular.module('app').factory('users', ['$resource', '$state', '$sce', ($resource, $state, $sce)=>{
+angular.module('app').factory('users', ['$resource', ($resource)=>{
     class Users{
         constructor(){
             this.currenPage = 0;
@@ -62,65 +62,9 @@ angular.module('app').factory('users', ['$resource', '$state', '$sce', ($resourc
             }
             return user;
         }
-/*start paginator*/
-        getAllUsersPage(num = 0){
-            let first = this.itemsInPage * num;
-            let last = first + this.itemsInPage;
-            this.currenPage = num;
-            return this.connect.getAllUsers().$promise.then((response)=>{
-                last = (response.data.length > last )? last : response.data.length;
-                return this.users1 = response.data.splice(first, last);
-            })
-        }
 
-        getNextPageProducts(){
-            let nextPageNum = this.currenPage + 1;
-            let pageNum = this.getTotalPageNum();
-            if(nextPageNum >= pageNum) nextPageNum = pageNum - 1;
-            return this.getAllUsersPage(nextPageNum);
-        }/* END of getPrevPageProducts */
-
-        getPrevPageProducts(){
-            let prevPageNum =  this.currenPage - 1;
-            if(prevPageNum < 0 ) prevPageNum = 0;
-            return this.getAllUsersPage(prevPageNum);
-        }/* END of getNextPageProducts */
-
-
-        getTotalPageNum(){
-            return Math.ceil(this.users.length / this.itemsInPage);
-        }
-
-        getPaginationList(){
-            let pagesNum = this.getTotalPageNum();
-            let arrPagesLists = [];
-
-            arrPagesLists.push({
-                name:  $sce.trustAsHtml('&laquo;'),
-                link: 'prev'
-            });
-
-            for( let i = 0; i < pagesNum; i++){
-                let name = i + 1;
-                arrPagesLists.push({
-                    name: $sce.trustAsHtml(String(name)),
-                    link: i
-                });
-            }
-            arrPagesLists.push({
-                name: $sce.trustAsHtml('&raquo;'),
-                link: 'next'
-            });
-            if(pagesNum > 1){
-                return arrPagesLists;
-            }
-            return false;
-        }
-/*end paginator*/
-        update(data, id){
-
+        update(data){
             this.connect.update({data});
-
         }
 
         inLogin(data){
@@ -143,7 +87,7 @@ angular.module('app').factory('users', ['$resource', '$state', '$sce', ($resourc
 
         delUser(id){
             for(let i = 0; i < this.users.length; i++){
-                if(this.users[i].id ===id){
+                if(this.users[i].id === id){
                     this.users.splice(this.users.indexOf(this.users[i]), 1);
 
                     break;

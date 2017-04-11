@@ -5,7 +5,7 @@ app.directive('recovery', [() => {
         controllerAs: 'recovery',
         controller(){
             this.inquiry = (userData, valid) =>{
-                console.log(userData, valid)
+
             }
         },
         templateUrl: 'tpl/recovery.html'

@@ -11,10 +11,8 @@ angular.module('app').directive('adminPreview', [()=>{
                 $state.go('login');
             }
 
-
             this.task = dbgetData.searchTaskById(this.taskId);
 
-            console.log('this is task to lokkkk' ,this.task , $stateParams);
         },
         templateUrl: 'tpl/admin/main/myPreview.html'
     }

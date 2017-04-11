@@ -1,7 +1,0 @@
-﻿[{"name":"Мои ошибки","value":"<div class='btn btn-group-justified'><a href='#!/create'class='btn btn-success'> создать задачу </a><a href='#!/remove' class='btn btn-danger'> удалить </a><a href='#!/send' class='btn btn-primary'> отправить в обработку </a></div><div id='table-content' ></div>"},
-{"name":"Поставленые в обработку"},
-{"name":"Принятые в работу"},
-{"name":"Исправленые"},
-{"name":"Статистика"},
-{"name":"Обратная форма связи"},
-{"name":"О нас"}]

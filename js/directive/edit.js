@@ -12,9 +12,6 @@ angular.module('app').directive('edit', [()=>{
 
             this.task = dbgetData.searchTaskById($stateParams.id);
 
-            console.log('this is edit----', $stateParams.id, this.task);
-
-
             this.addPost = (data, valid) =>{
                 if(valid){
                     data.status = 2;

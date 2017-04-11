@@ -9,7 +9,7 @@ angular.module('app').directive('inWork', [()=>{
             }
 
             this.task = dbgetData.getTasks();
-            console.log('inWork');
+
         },
         templateUrl: 'tpl/main/MyInWork.html'
     }

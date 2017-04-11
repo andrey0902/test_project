@@ -16,12 +16,12 @@ app.directive('header', [()=>{
                 vm.user = null;
                 $cookies.remove('user');
                 $state.go('login');
-                console.log('header cookies',$cookies.getObject('user'));
+
             };
 
             $scope.$on('cookies', (event, arguments)=>{
                 vm.user = arguments.message;
-                console.log('this is message==__', arguments);
+
             });
 
             return vm;

@@ -2,10 +2,10 @@
 
 
 $settings = [
-    'host'     => 'localhost',
-    'dbName'   => 'backtrack',
-    'user'     => 'root',
-    'password' => ''];
+    'host'     => 'mysql.zzz.com.ua',
+       'dbName'   => 'andrey666',
+       'user'     => 'andrey666',
+       'password' => 'uioder65'];
 
 function check_params($variable, $params, $value){
  if(isset($variable) && $variable[$params] == $value) return true;

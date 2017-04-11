@@ -9,8 +9,8 @@ angular.module('app').directive('done', [()=>{
             }
 
             this.task = dbgetData.getTasks();
-            console.log('send-to-wor');
+
         },
-        templateUrl: 'tpl/main/MyFixed.html'
+        templateUrl: 'tpl/main/myFixed.html'
     }
 }]);

@@ -11,8 +11,6 @@ angular.module('app').directive('usersCreate', [()=>{
             }
 
             this.tasks = dbAdmin.getTasks();
-
-
         },
         templateUrl: 'tpl/admin/main/create.html'
     }

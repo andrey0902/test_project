@@ -4,7 +4,7 @@ angular.module('app').directive('validLogin', [()=>{
         scope: {},
         template: ` `,
         controller(){
-            console.log('valid')
+
         }
     }
 }]);

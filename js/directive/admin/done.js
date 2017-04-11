@@ -16,7 +16,7 @@ angular.module('app').directive('adminDone', [()=>{
                 dbAdmin.changeStatus({id,
                     status: 2})
             };
-            console.log('this is admin in works-+');
+
         },
         templateUrl: 'tpl/admin/main/fixed.html'
     }

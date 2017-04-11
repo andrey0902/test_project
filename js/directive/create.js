@@ -11,7 +11,7 @@ app.directive('create', [()=>{
             }
             this.user = $cookies.getObject('user');
 
-            console.log( 'id user', this.user.id);
+
 
             this.addPost = (data, valid) =>{
                 if(valid){
@@ -20,7 +20,7 @@ app.directive('create', [()=>{
                     dbgetData.createTask(data);
                     $state.go('tasks.error');
                 }
-                console.log('this is edit', data, valid);
+
             };
             this.savePost = (data, valid) =>{
                 if(valid){

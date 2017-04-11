@@ -19,12 +19,12 @@ angular.module('app').directive('adminLogin',()=>{
                                 });
                                 $cookies.putObject('admin', response);
                                 $state.go('admin.users');
-                                console.log('response admin data', response);
+
                             }
 
                         })
                     }
-                    console.log('admin-login userData, valid', userData, valid);
+
                 };
 
             },

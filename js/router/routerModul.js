@@ -147,28 +147,14 @@
           });
 
 
-/*     setTimeout(()=>{
-          console.log('data', angular.module('app').dataModal);
-          angular.forEach(angular.module('app').dataModal, (item)=> {
-              console.log('create router--------',item);
-              $stateProvider
-                  .state( 'tasks.' + item.title, {
-                      url: '/' + item.title,
-                      controller: function(){
-                          console.log(item.title)
-                      },
-                      template: `<${item.title}></${item.title}>`
-                  })
-          })
-      },1000)*/
+
   }]);
 
  angular.module('app').run(function($rootScope, $state, users){
       $rootScope.$on('$stateChangeStart', function(event, toState){
           let name = toState.name;
-          console.log('toState', toState.name, toState);
+
           if(name !=='adminLogin' && name !== 'login' && name !== 'register' && name !== 'recovery' && !users.inLogin()){
-              alert('Вы должны авторизироваться!');
               event.preventDefault();
 
               $state.go('login');

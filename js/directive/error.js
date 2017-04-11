@@ -16,7 +16,7 @@
 
                 this.del = (task) =>{
                     dbgetData.deleteById(task);
-                    console.log('delete id', task.id);
+
                 }
             },
             templateUrl: 'tpl/main/mytable.html'

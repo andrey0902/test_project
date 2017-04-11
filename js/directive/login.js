@@ -11,7 +11,7 @@ angular.module('app').directive('login', [function(){
             this.inquiry = (userData, valid) =>{
                 if(valid){
                     users.inLogin(userData).then((response)=>{
-                        console.log('-----', response);
+
                         if(response !== 'error'){
                             $rootScope.$broadcast('cookies', {
                                 message: response
@@ -27,12 +27,12 @@ angular.module('app').directive('login', [function(){
                     });
 
                 }
-                console.log(userData, valid);
+
             }
         },
         controllerAs: 'login',
         link(){
-         console.log('directive login')
+
         },
         templateUrl: 'tpl/login.html'
     }

@@ -9,7 +9,7 @@ angular.module('app').directive('adminMain', ()=>{
             }
 
             this.modules = dbAdmin.getModules();
-            console.log('admin main------');
+
         },
         templateUrl: 'tpl/admin/myAdminMain.html'
     }

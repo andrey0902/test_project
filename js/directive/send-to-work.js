@@ -10,8 +10,7 @@ angular.module('app').directive('sendToWork', [()=>{
             }
 
             this.task = dbgetData.getTasks();
-            console.log('send-to-wor');
         },
-        templateUrl: 'tpl/main/MySendToWork.html'
+        templateUrl: '/tpl/main/sendToWork.html'
     }
 }]);

@@ -2,7 +2,6 @@ angular.module('app').factory('dbgetData', ['$resource', '$state', ($resource, $
     class dbgetData {
         constructor(){
             this.tasks = null;
-            this.tasks1 =null;
 
             this.conect = $resource('',{},{
                 get:{
@@ -73,12 +72,12 @@ angular.module('app').factory('dbgetData', ['$resource', '$state', ($resource, $
                     break;
                 }
             }
-            console.log('result this.task11111',result, this.tasks);
+
             return result;
         }
 
         deleteById(task){
-            console.log('task is delete', task.id);
+
             this.tasks.splice(this.tasks.indexOf(task), 1);
             this.conect.del({id: task.id});
         }

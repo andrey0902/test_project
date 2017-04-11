@@ -106,7 +106,7 @@ angular.module('app').factory('dbAdmin', ['$resource', ($resource) =>{
         }
 
         updateTasks(data){
-            console.log('update11111', data, 'go to tasks', this.tasks);
+
             this.conect.create({data});
 
             for(let i = 0; i<= this.tasks.length; i++){
